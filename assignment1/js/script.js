@@ -3,7 +3,7 @@
 /*****************
 
 Circle Eater
-Pippin Barr
+Rose-Marie Dion
 
 A simple game in which the player controls a shrinking circle with their mouse and tries
 to overlap another circle (food) in order to grow bigger.
@@ -29,7 +29,13 @@ let food = {
   x: 0,
   y: 0,
   size: 64,
-  color: '#55cccc'
+  color: '#55cccc',
+  vx: 0,
+  vy: 0,
+  speed: 2,
+  maxSpeed: 5,
+  tx: 0,
+  ty: 0
 }
 
 // preload()
@@ -46,7 +52,7 @@ function preload() {
 // Create the canvas, position the food, remove the cursor
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(windowWidth, windowHeight);
   positionFood();
   noCursor();
 }
@@ -70,6 +76,7 @@ function draw() {
   checkCollision();
   displayAvatar();
   displayFood();
+  updateFood();
 }
 
 // updateAvatar()
@@ -81,7 +88,7 @@ function updateAvatar() {
   avatar.x = mouseX;
   avatar.y = mouseY;
   // Shrink the avatar and use constrain() to keep it to reasonable bounds
-  avatar.size = constrain(avatar.size - AVATAR_SIZE_LOSS,0,avatar.maxSize);
+  avatar.size = constrain(avatar.size - AVATAR_SIZE_LOSS, 0, avatar.maxSize);
   if (avatar.size === 0) {
     avatar.active = false;
   }
@@ -93,9 +100,9 @@ function updateAvatar() {
 // Check if the distance is small enough to be an overlap of the two circles
 // If so, grow the avatar and reposition the food
 function checkCollision() {
-  let d = dist(avatar.x,avatar.y,food.x,food.y);
-  if (d < avatar.size/2 + food.size/2) {
-    avatar.size = constrain(avatar.size + AVATAR_SIZE_GAIN,0,avatar.maxSize);
+  let d = dist(avatar.x, avatar.y, food.x, food.y);
+  if (d < avatar.size / 2 + food.size / 2) {
+    avatar.size = constrain(avatar.size + AVATAR_SIZE_GAIN, 0, avatar.maxSize);
     positionFood();
   }
 }
@@ -109,7 +116,7 @@ function displayAvatar() {
   push();
   noStroke();
   fill(avatar.color);
-  ellipse(avatar.x,avatar.y,avatar.size);
+  ellipse(avatar.x, avatar.y, avatar.size);
   pop();
 }
 
@@ -122,14 +129,40 @@ function displayFood() {
   push();
   noStroke();
   fill(food.color);
-  ellipse(food.x,food.y,food.size);
+  ellipse(food.x, food.y, food.size);
   pop();
 }
+
+function updateFood() {
+  if (random() < 0.05) {
+  food.vx = random(-food.maxSpeed, food.maxSpeed);
+  food.vy = random(-food.maxSpeed, food.maxSpeed);
+
+  }
+
+  food.x += food.vx;
+  food.y += food.vy;
+
+  if (food.x < 0) {
+    food.x += width;
+  } else if (food.x > width) {
+    food.x -= width;
+  }
+
+  if (food.y < 0) {
+    food.y += height;
+  } else if (food.y > height) {
+    food.y -= height;
+  }
+}
+
+
+
 
 // positionFood()
 //
 // Set the food's position properties to random numbers within the canvas dimensions
 function positionFood() {
-  food.x = random(0,width);
-  food.y = random(0,height);
+  food.x = random(0, width);
+  food.y = random(0, height);
 }
