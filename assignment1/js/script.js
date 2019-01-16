@@ -156,9 +156,6 @@ function updateFood() {
   }
 }
 
-
-
-
 // positionFood()
 //
 // Set the food's position properties to random numbers within the canvas dimensions
