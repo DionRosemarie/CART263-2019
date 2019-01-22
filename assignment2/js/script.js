@@ -17,8 +17,8 @@ const AVATAR_SIZE_LOSS = 1;
 function setup() {
   createCanvas(windowWidth,windowHeight);
   for (let i = 0; i < 10; i++) {
-  food.push(new Food(0,0,random(0,20))); }
-  avatar = new Avatar(0,0,30);
+  food.push(new Food(0,0,random(0,50))); }
+  avatar = new Avatar(0,0,60,100);
 
 }
 

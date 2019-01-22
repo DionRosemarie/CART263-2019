@@ -1,5 +1,5 @@
 class Avatar {
-  constructor(x, y, size) {
+  constructor(x, y, size,maxSize) {
     this.x = 0;
     this.y = 0;
     this.maxSize = size;
