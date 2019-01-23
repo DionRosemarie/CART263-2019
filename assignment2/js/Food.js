@@ -13,7 +13,6 @@ class Food {
   }
 
   update() {
-    console.log("sup");
     if (random() < 0.05) {
       this.vx = random(-this.maxSpeed, this.maxSpeed);
       this.vy = random(-this.maxSpeed, this.maxSpeed);
@@ -41,11 +40,10 @@ class Food {
     this.x = random(0, width);
     this.y = random(0, height);
   }
-  
+
 
   display() {
     push();
-    console.log("hello");
     noStroke();
     fill(this.color);
     ellipse(this.x, this.y, this.size);

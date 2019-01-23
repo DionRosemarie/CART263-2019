@@ -8,6 +8,7 @@ class Avatar {
     this.color = '#cccc55';
     this.sizeLoss = AVATAR_SIZE_LOSS;
     this.sizeGain = AVATAR_SIZE_GAIN;
+
   }
 
   update() {
@@ -22,12 +23,12 @@ class Avatar {
   }
 
   checkCollision(food) {
-    console.log('collision');
     let d = dist(this.x, this.y, food.x, food.y);
     if (d < this.size / 2 + food.size / 2) {
     this.size = constrain(this.size + this.sizeGain, 0, this.maxSize);
     food.position();
     }
+
   }
 
 

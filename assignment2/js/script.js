@@ -25,18 +25,26 @@ function setup() {
 function draw() {
   background(0);
 
-  if (!avatar.active) {
-  return;
+  if (avatar.active === true) {
+    for (let i = 0; i < food.length; i++) {
+    food[i].update();
+    food[i].display();
+    avatar.checkCollision(food[i]);
+
+    }
+
+    avatar.update();
+    avatar.display();
+
 }
 
-  for (let i = 0; i < food.length; i++) {
-  food[i].update();
-  food[i].display();
-  avatar.checkCollision(food[i]);
-
-  }
-
-  avatar.update();
-  avatar.display();
+else {
+  push();
+  fill(255);
+  textSize(40)
+  textAlign(CENTER)
+  text('you died ', width/2, height/2);
+  pop();
+}
 
 }
