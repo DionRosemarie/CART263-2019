@@ -19,4 +19,18 @@ $(document).ready(function() {
   $leaf = $('#leaf');
 
   $($leaf).draggable();
+  $($ant).droppable({
+    drop: leafDropped,
+
+  })
+
+});
+
+function leafDropped() {
+  $($leaf).animate({
+    left:-400,
+    top:100,
+    opacity:0,
 })
+
+}
