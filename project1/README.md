@@ -1,0 +1,5 @@
+Sisyphus has the task to push a rock to the top of a mountain indefinitely because he can’t push it to top. In other words, he has an impossible task to do. He has a purpose, but knows at the end he will never be able to achieve it. In this set of mind, my game is going to have a purpose, a goal. When the player thinks he has achieved the task, he will be disappointed because the task is never going to be done.
+
+Because the task of Sisyphus is a punishment, mine as to be too. An ant, a unoffensive animal of the chain food is going to be the avatar. The task is to feed the poop little ant with a simple leaf from the tall tree. You have to grab a leaf on the tree and drag it to the ant to feed it. The trick is that when you give the leaf to the avatar, which would normally end the game, the wind is going to blow too hard so the ant can’t keep the lead with it. After a few tries, the ant becomes to weak and die.
+
+The concept is simple, but have in mind to create a little frustration with the fact that you can’t succeed this simple task. 
