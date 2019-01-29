@@ -55,10 +55,6 @@ function spanClicked() {
 function update() {
   $spans.each(updateSpan);
 
-  if($secretFound === $('.secret').length) {
-    $('.endgame').show();
-
-  }
 }
 
 function spanFound() {
