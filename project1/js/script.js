@@ -6,8 +6,8 @@ Rose-Marie Dion
 ******************/
 
 
-function setup() {
+//function setup() {
   // Creating the canvas
-  createCanvas(800, 500);
-  background(0);
-}
+//  createCanvas(800, 500);
+//  background(255);
+//}
