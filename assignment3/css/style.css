@@ -35,8 +35,11 @@ div {
 }
 
 .found {
-  background-color: transparent;
-  font-style: oblique;
-  text-transform: capitalize;
-  color: red;
+  background-color: yellow;
+}
+
+.endGame {
+  display: block;
+  background-color: black;
+  color: white;
 }
