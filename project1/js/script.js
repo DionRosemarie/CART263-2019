@@ -8,6 +8,6 @@ Rose-Marie Dion
 
 function setup() {
   // Creating the canvas
-  createCanvas(500, 500);
+  createCanvas(800, 500);
   background(0);
 }
