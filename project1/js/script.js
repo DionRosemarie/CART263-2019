@@ -29,7 +29,7 @@ $(document).ready(function() {
 function leafDropped() {
   $($leaf).animate({
     left:-400,
-    top:100,
+    top:-100,
     opacity:0,
 })
 
