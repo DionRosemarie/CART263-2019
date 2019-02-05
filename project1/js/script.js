@@ -41,6 +41,7 @@ $(document).ready(function() {
 
 });
 
+// Function to make the ant move
 function swapImages() {
   if (swap === true) {
     if ($ant.attr('src') === 'assets/images/ant.png') {
@@ -58,6 +59,7 @@ function swapImages() {
   }
 }
 
+// Function to make the leaf go away when dropped
 function leafDropped() {
   $(arr).animate({
     left: -400,
