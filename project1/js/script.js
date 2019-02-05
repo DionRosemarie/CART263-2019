@@ -40,10 +40,6 @@ $(document).ready(function() {
 
   });
 
-
-
-
-
   $($ant).droppable({
     drop: leafDropped,
 
@@ -77,14 +73,34 @@ function leafDropped(event, ui) {
     left: -400,
     top: -100,
     opacity: 0,
-  }, function () {
+  }, function() {
     console.log("remove");
     $(ui.draggable).remove();
-    numLeaf -=1;
+    numLeaf -= 1;
     console.log(numLeaf);
+    newLeaf();
 
-  })
+    });
+
 
   $($wind).show();
   $($wind).fadeOut(500);
+}
+
+function newLeaf(){
+
+      $('body').append('<div class="leaf"><img src="./assets/images/leaf2.png" id="leaf2" width="100" height="100"></div>');
+      $leaf = $('.leaf');
+
+      $leaf.draggable({
+        start: function(event, ui) {
+          console.log('start');
+          swap = true;
+          setInterval(swapImages, 200);
+        },
+        stop: function(event, ui) {
+          swap = false;
+        }
+
+    })
 }
