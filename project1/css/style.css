@@ -29,8 +29,8 @@ body {
   margin-top: 200px;
 }
 
-#leaf{
-  position: absolute;
+.leaf1 {
+  position: relative;
   top: 100px;
   right: 100px;
 }

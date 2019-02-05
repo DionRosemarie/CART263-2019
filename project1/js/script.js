@@ -13,21 +13,24 @@ Rose-Marie Dion
 //}
 let $ant;
 // This variable let me have multiple leaf to drag
-let array = document.getElementsByTagName("div");
+let $leaf;
 let swap;
 let $wind;
 
 
 $(document).ready(function() {
   $ant = $('#ant');
-  $array = $('#array');
   $wind = $('#wind');
+  $leaf = $('.leaf');
   swap = false;
 
   $($wind).hide();
 
-  $(array).draggable({
+
+
+  $leaf.draggable({
     start: function(event, ui) {
+      console.log('start');
       swap = true;
       setInterval(swapImages, 200);
     },
@@ -36,6 +39,9 @@ $(document).ready(function() {
     }
 
   });
+
+  //$('#leaf1').addClass('leaf1')
+
 
 
   $($ant).droppable({
@@ -64,8 +70,9 @@ function swapImages() {
 }
 
 // Function to make the leaf go away when dropped
-function leafDropped() {
-  $(array).animate({
+function leafDropped(event, ui) {
+  console.log('leaf');
+  $(ui.draggable).animate({
     left: -400,
     top: -100,
     opacity: 0,
