@@ -16,17 +16,17 @@ let $ant;
 let $leaf;
 let swap;
 let $wind;
+let numLeaf = 6;
 
 
 $(document).ready(function() {
   $ant = $('#ant');
   $wind = $('#wind');
   $leaf = $('.leaf');
+  console.log($leaf);
   swap = false;
 
   $($wind).hide();
-
-
 
   $leaf.draggable({
     start: function(event, ui) {
@@ -40,12 +40,13 @@ $(document).ready(function() {
 
   });
 
-  //$('#leaf1').addClass('leaf1')
+
 
 
 
   $($ant).droppable({
     drop: leafDropped,
+
 
   })
 
@@ -76,6 +77,12 @@ function leafDropped(event, ui) {
     left: -400,
     top: -100,
     opacity: 0,
+  }, function () {
+    console.log("remove");
+    $(ui.draggable).remove();
+    numLeaf -=1;
+    console.log(numLeaf);
+
   })
 
   $($wind).show();
