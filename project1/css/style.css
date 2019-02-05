@@ -29,11 +29,7 @@ body {
   margin-top: 200px;
 }
 
-.leaf1 {
-  position: relative;
-  top: 100px;
-  right: 100px;
-}
+
 
 #wind{
   position: absolute;
