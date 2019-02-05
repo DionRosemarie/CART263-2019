@@ -18,20 +18,12 @@ let swap;
 let $wind;
 let numLeaf = 6;
 
-let $leafImage = [
-  "assets/images/leaf.png",
-  "assets/images/leaf2.png",
-  "assets/images/leaf3.png",
-  "assets/images/leaf4.png",
-  "assets/images/leaf5.png",
-  "assets/images/leaf6.png",
-]
-
-
 $(document).ready(function() {
   $ant = $('#ant');
   $wind = $('#wind');
+  $ant = $('#ant');
   $leaf = $('.leaf');
+
   console.log($leaf);
   swap = false;
 
@@ -76,31 +68,31 @@ function swapImages() {
 }
 
 // Function to make the leaf go away when dropped
-function leafDropped(event, ui,) {
+function leafDropped(event, ui, ) {
   console.log('leaf');
   $(ui.draggable).animate({
     left: -400,
     top: -100,
     opacity: 0,
+
   }, function() {
     console.log("remove");
-    $(ui.draggable).position({top: 100, left: 100,});
-    // change the src attribute of ui.draggable to a random image from the array
-    //var display = Math.floor(Math.random() * leafImages.length);
-
+    $(ui.draggable).remove();
 
     numLeaf -= 1;
     console.log(numLeaf);
-    newLeaf(ui.draggable.attr('num'));
+    newLeaf();
 
   });
 
   $($wind).show();
   $($wind).fadeOut(500);
+
 }
 
 function newLeaf() {
-  $('body').append(randomLeaf());
+
+  $('body').append('<div class="leaf"><img src="./assets/images/leaf.png" id="leaf2" width="100" height="100"></div>');
   $leaf = $('.leaf');
 
   $leaf.draggable({
@@ -114,20 +106,4 @@ function newLeaf() {
     }
 
   })
-}
-
-function randomLeaf(leafnumber) {
-  console.log("random");
-  var leafRandom = $('#leaf'+ leafnumber);
-//  if (leafRandom.length) {
-  //  console.log("random2");
-    var display = Math.floor(Math.random() * leafRandom.length);
-    //leafImages[display]
-    for (var i = 0; i < leafRandom.length; i++) {
-      if (i !== display) {
-        $(leafRandom[i]).hide();
-      }
-
-    }
-//  }
 }
