@@ -13,14 +13,18 @@ Rose-Marie Dion
 //}
 let $ant;
 // This variable let me have multiple leaf to drag
-let arr = document.getElementsByTagName( "div" );
+let arr = document.getElementsByTagName("div");
 let swap;
+let $wind;
 
 
 $(document).ready(function() {
   $ant = $('#ant');
   $arr = $('#arr');
+  $wind = $('#wind');
   swap = false;
+
+  $($wind).hide();
 
   $(arr).draggable({
     start: function(event, ui) {
@@ -67,4 +71,6 @@ function leafDropped() {
     opacity: 0,
   })
 
+  $($wind).show();
+  $($wind).fadeOut(500);
 }

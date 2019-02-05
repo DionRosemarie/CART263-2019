@@ -34,3 +34,9 @@ body {
   top: 100px;
   right: 100px;
 }
+
+#wind{
+  position: absolute;
+  top: 350px;
+  right: 200px;
+}
