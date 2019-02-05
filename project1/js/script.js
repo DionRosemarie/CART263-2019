@@ -12,17 +12,17 @@ Rose-Marie Dion
 //  background(255);
 //}
 let $ant;
-let $leaf;
+// This variable let me have multiple leaf to drag
+let arr = document.getElementsByTagName( "div" );
 let swap;
+
 
 $(document).ready(function() {
   $ant = $('#ant');
-  $leaf = $('#leaf');
+  $arr = $('#arr');
   swap = false;
 
-
-
-  $($leaf).draggable({
+  $(arr).draggable({
     start: function(event, ui) {
       swap = true;
       setInterval(swapImages, 200);
@@ -32,6 +32,7 @@ $(document).ready(function() {
     }
 
   });
+
 
   $($ant).droppable({
     drop: leafDropped,
@@ -58,7 +59,7 @@ function swapImages() {
 }
 
 function leafDropped() {
-  $($leaf).animate({
+  $(arr).animate({
     left: -400,
     top: -100,
     opacity: 0,
