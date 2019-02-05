@@ -13,20 +13,20 @@ Rose-Marie Dion
 //}
 let $ant;
 // This variable let me have multiple leaf to drag
-let arr = document.getElementsByTagName("div");
+let array = document.getElementsByTagName("div");
 let swap;
 let $wind;
 
 
 $(document).ready(function() {
   $ant = $('#ant');
-  $arr = $('#arr');
+  $array = $('#array');
   $wind = $('#wind');
   swap = false;
 
   $($wind).hide();
 
-  $(arr).draggable({
+  $(array).draggable({
     start: function(event, ui) {
       swap = true;
       setInterval(swapImages, 200);
@@ -65,7 +65,7 @@ function swapImages() {
 
 // Function to make the leaf go away when dropped
 function leafDropped() {
-  $(arr).animate({
+  $(array).animate({
     left: -400,
     top: -100,
     opacity: 0,
