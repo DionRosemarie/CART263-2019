@@ -88,8 +88,7 @@ function leafDropped(event, ui) {
 }
 
 function newLeaf(){
-
-      $('body').append('<div class="leaf"><img src="./assets/images/leaf2.png" id="leaf2" width="100" height="100"></div>');
+      $('body').append(randomLeaf());
       $leaf = $('.leaf');
 
       $leaf.draggable({
@@ -103,4 +102,19 @@ function newLeaf(){
         }
 
     })
+}
+
+function randomLeaf() {
+  console.log("random");
+  var leafRandom = $('.leaf');
+  if (leafRandom.length) {
+  console.log("random2");
+    var display=Math.floor(Math.random() * leafRandom.length );
+    for(var i =0; i<leafRandom.length;i++){
+    if(i!==display){
+      $(leafRandom[i]).hide();
+    }
+
+    }
+  }
 }
