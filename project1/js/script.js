@@ -23,12 +23,14 @@ $(document).ready(function() {
 
 
   $($leaf).draggable({
-     start: function( event, ui ) {
-     swap = true;
-     setInterval(swapImages,100);},
-     stop: function( event, ui) {
-    swap = false;
-     }
+    start: function(event, ui) {
+      swap = true;
+      setInterval(swapImages, 200);
+    },
+    stop: function(event, ui) {
+      swap = false;
+    }
+
   });
 
   $($ant).droppable({
@@ -55,11 +57,11 @@ function swapImages() {
   }
 }
 
-  function leafDropped() {
-    $($leaf).animate({
-      left: -400,
-      top: -100,
-      opacity: 0,
-    })
+function leafDropped() {
+  $($leaf).animate({
+    left: -400,
+    top: -100,
+    opacity: 0,
+  })
 
-  }
+}
