@@ -28,3 +28,9 @@ body {
   margin-right: auto;
   margin-top: 200px;
 }
+
+#leaf{
+  position: absolute;
+  top: 100px;
+  right: 100px;
+}
