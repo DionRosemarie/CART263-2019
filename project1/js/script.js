@@ -7,20 +7,28 @@ Rose-Marie Dion
 
 
 //function setup() {
-  // Creating the canvas
+// Creating the canvas
 //  createCanvas(800, 500);
 //  background(255);
 //}
 let $ant;
 let $leaf;
+let swap;
 
 $(document).ready(function() {
   $ant = $('#ant');
   $leaf = $('#leaf');
+  swap = false;
+
 
 
   $($leaf).draggable({
-    start: setInterval(swapImages,500),
+     start: function( event, ui ) {
+     swap = true;
+     setInterval(swapImages,100);},
+     stop: function( event, ui) {
+    swap = false;
+     }
   });
 
   $($ant).droppable({
@@ -31,23 +39,27 @@ $(document).ready(function() {
 });
 
 function swapImages() {
-  if ($ant.attr('src') === 'assets/images/ant.png') {
+  if (swap === true) {
+    if ($ant.attr('src') === 'assets/images/ant.png') {
 
-  $ant.attr('src','assets/images/antMoved.png');
+      $ant.attr('src', 'assets/images/antMoved.png');
 
+    } else {
+
+      $ant.attr('src', 'assets/images/ant.png');
+    }
+
+  } else {
+
+    $ant.attr('src', 'assets/images/ant.png');
+  }
 }
-else {
 
-  $ant.attr('src','assets/images/ant.png');
-}
+  function leafDropped() {
+    $($leaf).animate({
+      left: -400,
+      top: -100,
+      opacity: 0,
+    })
 
-}
-
-function leafDropped() {
-  $($leaf).animate({
-    left:-400,
-    top:-100,
-    opacity:0,
-})
-
-}
+  }
