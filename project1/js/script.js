@@ -12,6 +12,7 @@ let $leaf;
 let swap;
 let $wind;
 let $text;
+let $windText;
 let numLeaf = 6;
 let shakeLeaf = 500;
 let leafSound = new Audio("assets/sounds/leaves.mp3");
@@ -24,6 +25,7 @@ $(document).ready(function() {
   $ant = $('#ant');
   $leaf = $('.leaf');
   $text = $('.text');
+  $windText = $('.windText');
 
   //the swap function is false otherwise it will swap when loading the page
   console.log($leaf);
@@ -31,6 +33,7 @@ $(document).ready(function() {
   // hide the variables i don't need at the beginning
   $($wind).hide();
   $text.hide();
+  $windText.hide();
   // on mouseover, the leaf that is draggable is going to shake
   $leaf.on("mouseover", leafShake);
 
@@ -109,6 +112,7 @@ function leafDropped(event, ui, ) {
   // make appear and disappear the element i want in my game/composition
   $($wind).show();
   $($wind).fadeOut(500);
+  $windText.show();
   $text.fadeOut(500);
 }
 // new leaf function when it is remove
@@ -120,7 +124,8 @@ function newLeaf() {
   // make the new leaf shake
   $leaf.on("mouseover", leafShake);
 
-
+// make the information about the wind disappear
+  $windText.fadeOut(4000);
   // make the new leaf draggable
   $leaf.draggable({
     start: function(event, ui) {
