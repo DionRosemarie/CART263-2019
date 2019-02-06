@@ -6,19 +6,16 @@ Rose-Marie Dion
 ******************/
 
 
-//function setup() {
-// Creating the canvas
-//  createCanvas(800, 500);
-//  background(255);
-//}
+
 let $ant;
-// This variable let me have multiple leaf to drag
+
 let $leaf;
 let swap;
 let $wind;
 let $text;
 let numLeaf = 6;
 let shakeLeaf = 500;
+let leafSound = new Audio("assets/sounds/leaves.mp3");
 
 $(document).ready(function() {
   $ant = $('#ant');
@@ -61,6 +58,7 @@ $(document).ready(function() {
 
 function leafShake() {
    setInterval(shakeLeaf, $(this).effect("shake"));
+  leafSound.play();
 }
 
 // Function to make the ant move
@@ -96,7 +94,7 @@ function leafDropped(event, ui, ) {
     numLeaf -= 1;
     console.log(numLeaf);
     newLeaf();
-
+    leaf
   });
 
   $($wind).show();
