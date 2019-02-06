@@ -17,6 +17,7 @@ let $leaf;
 let swap;
 let $wind;
 let numLeaf = 6;
+let shakeLeaf = 500;
 
 $(document).ready(function() {
   $ant = $('#ant');
@@ -28,6 +29,8 @@ $(document).ready(function() {
   swap = false;
 
   $($wind).hide();
+
+  $leaf.on("mouseover", leafShake);
 
   $leaf.draggable({
     start: function(event, ui) {
@@ -48,6 +51,10 @@ $(document).ready(function() {
   })
 
 });
+
+function leafShake() {
+   setInterval(shakeLeaf, $(this).effect("shake"));
+}
 
 // Function to make the ant move
 function swapImages() {
@@ -94,6 +101,8 @@ function newLeaf() {
 
   $('body').append('<div class="leaf"><img src="./assets/images/leaf.png" id="leaf2" width="100" height="100"></div>');
   $leaf = $('.leaf');
+
+  $leaf.on("mouseover", leafShake);
 
   $leaf.draggable({
     start: function(event, ui) {
