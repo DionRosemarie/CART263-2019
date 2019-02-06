@@ -11,7 +11,7 @@ let $ant;
 let $leaf;
 let swap;
 let $wind;
-let $text;
+let $antText;
 let $windText;
 let numLeaf = 6;
 let shakeLeaf = 500;
@@ -24,7 +24,7 @@ $(document).ready(function() {
   $wind = $('#wind');
   $ant = $('#ant');
   $leaf = $('.leaf');
-  $text = $('.text');
+  $antText = $('.antText');
   $windText = $('.windText');
 
   //the swap function is false otherwise it will swap when loading the page
@@ -32,14 +32,14 @@ $(document).ready(function() {
   swap = false;
   // hide the variables i don't need at the beginning
   $($wind).hide();
-  $text.hide();
+  $antText.hide();
   $windText.hide();
   // on mouseover, the leaf that is draggable is going to shake
   $leaf.on("mouseover", leafShake);
 
   // on click, the text of what to do will appear
   $leaf.click(function() {
-    $text.show();
+  $antText.show();
   });
 
   // draggable function
@@ -113,7 +113,7 @@ function leafDropped(event, ui, ) {
   $($wind).show();
   $($wind).fadeOut(500);
   $windText.show();
-  $text.fadeOut(500);
+  $antText.fadeOut(500);
 }
 // new leaf function when it is remove
 function newLeaf() {
@@ -124,7 +124,7 @@ function newLeaf() {
   // make the new leaf shake
   $leaf.on("mouseover", leafShake);
 
-// make the information about the wind disappear
+  // make the information about the wind disappear
   $windText.fadeOut(4000);
   // make the new leaf draggable
   $leaf.draggable({
