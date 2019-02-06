@@ -16,6 +16,7 @@ let $ant;
 let $leaf;
 let swap;
 let $wind;
+let $text;
 let numLeaf = 6;
 let shakeLeaf = 500;
 
@@ -24,13 +25,19 @@ $(document).ready(function() {
   $wind = $('#wind');
   $ant = $('#ant');
   $leaf = $('.leaf');
+  $text = $('.text');
 
   console.log($leaf);
   swap = false;
 
   $($wind).hide();
+  $text.hide();
 
   $leaf.on("mouseover", leafShake);
+
+  $leaf.click(function() {
+  $text.show();
+});
 
   $leaf.draggable({
     start: function(event, ui) {
@@ -94,7 +101,7 @@ function leafDropped(event, ui, ) {
 
   $($wind).show();
   $($wind).fadeOut(500);
-
+  $text.fadeOut(500);
 }
 
 function newLeaf() {
