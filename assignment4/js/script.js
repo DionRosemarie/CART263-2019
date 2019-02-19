@@ -39,11 +39,8 @@ function setup() {
   $mouth.droppable({
     // The drop option specifies a function to call when a drop is completed
     drop: flyDropped,
-    accept: ".special"
+    accept: $fly
   });
-
-  let $accept = $mouth.droppable("option","accept");
-  $('#mouth').droppable("option","accept",$fly);
 
   // Get the flower element from the page
   $flower = $('#flower');
