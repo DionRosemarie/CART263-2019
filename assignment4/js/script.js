@@ -21,6 +21,7 @@ let crunchSFX = new Audio("assets/sounds/crunch.wav");
 // Variable to hold our two key elements
 let $mouth;
 let $fly;
+let $flower;
 
 $(document).ready(setup);
 
@@ -37,6 +38,11 @@ function setup() {
   $fly = $('#fly');
   // Make it draggable
   $fly.draggable();
+
+  // Get the flower element from the page
+  $flower = $('#flower');
+  // Make it draggable
+  $flower.draggable();
 
   // Start up the buzzing of the fly
   buzzSFX.loop = true;
