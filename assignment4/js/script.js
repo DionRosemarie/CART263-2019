@@ -47,7 +47,11 @@ function setup() {
   // Get the flower element from the page
   $flower = $('#flower');
   // Make it draggable
-  $flower.draggable();
+  $flower.draggable({
+    revert: true
+  });
+  let $revert = $flower.draggable("option", "revert");
+  $('#flower').draggable("option","revert",true);
 
   // Start up the buzzing of the fly
   buzzSFX.loop = true;
