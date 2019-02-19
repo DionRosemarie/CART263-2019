@@ -17,6 +17,7 @@ Chewing: https://freesound.org/people/InspectorJ/sounds/412068/
 // Sound effects for the experience
 let buzzSFX = new Audio("assets/sounds/buzz.mp3");
 let crunchSFX = new Audio("assets/sounds/crunch.wav");
+let noSFX = new Audio("assets/sounds/no.mp3");
 
 // Variable to hold our two key elements
 let $mouth;
@@ -48,16 +49,20 @@ function setup() {
   $flower = $('#flower');
   // Make it draggable
   $flower.draggable({
-    revert: true
+    revert: flowerDropped
   });
   let $revert = $flower.draggable("option", "revert");
-  $('#flower').draggable("option","revert",true);
+  $('#flower').draggable("option","revert");
 
   // Start up the buzzing of the fly
   buzzSFX.loop = true;
   buzzSFX.play();
 }
-
+function flowerDropped () {
+  console.log('sup');
+  noSFX.play();
+  return true;
+}
 // flyDropped(event,ui)
 //
 // Called when a draggable element is dragged over the droppable element (the mouth)
