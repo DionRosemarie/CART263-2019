@@ -26,18 +26,23 @@ let $flower;
 $(document).ready(setup);
 
 function setup() {
-  // Get the mouth element from the page
-  $mouth = $('#mouth');
-  // Make it droppable
-  $mouth.droppable({
-    // The drop option specifies a function to call when a drop is completed
-    drop: flyDropped
-  });
 
   // Get the fly element from the page
   $fly = $('#fly');
   // Make it draggable
   $fly.draggable();
+
+  // Get the mouth element from the page
+  $mouth = $('#mouth');
+  // Make it droppable
+  $mouth.droppable({
+    // The drop option specifies a function to call when a drop is completed
+    drop: flyDropped,
+    accept: ".special"
+  });
+
+  let $accept = $mouth.droppable("option","accept");
+  $('#mouth').droppable("option","accept",$fly);
 
   // Get the flower element from the page
   $flower = $('#flower');
