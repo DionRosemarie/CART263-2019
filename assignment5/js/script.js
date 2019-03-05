@@ -176,7 +176,7 @@ $(document).ready(setup);
 // In order to be able to play sound, our setup involves clicking once
 // to actually start the game.
 function setup() {
-  $('#click-to-begin').on('click',startGame);
+  $('#click-to-begin').on('click', startGame);
   $('#numScore').hide();
 }
 
@@ -241,7 +241,7 @@ function speakAnimal(name) {
 
   // Use ResponsiveVoice to speak the string we generated, with UK English Male voice
   // and the options we just specified.
-  responsiveVoice.speak(reverseAnimal,'UK English Male',options);
+  responsiveVoice.speak(reverseAnimal, 'UK English Male', options);
 }
 
 // addButton(label)
@@ -256,7 +256,7 @@ function addButton(label) {
   // Turn the div into a button using jQuery UI's .button() method
   $button.button();
   // Listen for a click on the button which means the user has guessed
-  $button.on('click',function () {
+  $button.on('click', function() {
     // If the button they clicked on has a label matching the correct answer...
     if ($(this).text() === correctAnimal) {
       // Remove all the buttons
@@ -264,9 +264,8 @@ function addButton(label) {
       score++;
       $('#numScore').text(score);
       // Start a new round
-      setTimeout(newRound,1000);
-    }
-    else {
+      setTimeout(newRound, 1000);
+    } else {
       // Otherwise they were wrong, so shake the button
       $(this).effect('shake');
       score = 0;
@@ -278,4 +277,30 @@ function addButton(label) {
 
   // Finally, add the button to the page so we can see it
   $('body').append($button);
+}
+
+if (annyang) {
+  var commands = {
+    'I give up': function() {
+      $('.guess').each(function() {
+        if ($(this).text() === correctAnimal) {
+          $(this).effect('shake');
+        }
+      });
+    },
+    'Say it again': function() {
+      speakAnimal(correctAnimal);
+    },
+    "I think it's *tag": function(tag) {
+      if (tag === correctAnimal){
+        score++;
+        $('#numScore').text(score);
+        $('.guess').remove();
+        setTimeout(newRound,1000);
+      }
+    }
+
+  }
+  annyang.addCommands(commands);
+  annyang.start();
 }
