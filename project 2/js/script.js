@@ -9,7 +9,7 @@ This is a template. You must fill in the title,
 author, and this description to match your project!
 
 ******************/
-let name = [
+let names = [
   "Jeremy",
   "Alicia",
   "Matthew",
@@ -22,8 +22,9 @@ let name = [
   "Catherine",
   "Fiona"
 ];
+let chosenName;
 
-let animal = [
+let animals = [
   "snake",
   "elephant",
   "crocodile",
@@ -36,8 +37,9 @@ let animal = [
   "giraffe",
   "hippopotamus",
 ];
+let chosenAnimal;
 
-let action = [
+let actions = [
   "cries",
   "laughes",
   "screams",
@@ -47,16 +49,18 @@ let action = [
   "yells",
   "signs"
 ];
+let chosenAction;
 
-let moment = [
+let moments = [
   "in the morning",
   "at night",
   "during the break",
   "in the afternoon",
   "before noon"
 ];
+let chosenMoment;
 
-let place = [
+let places = [
   "in the shower",
   "at school",
   "at work",
@@ -66,6 +70,9 @@ let place = [
   "at the kitchen counter",
   "at the movie theater"
 ];
+let chosenPlace;
+
+let answers = [];
 
 // How many choices by question the user has
 const NUM_OPTIONS = 3;
@@ -79,17 +86,17 @@ $(document).ready(setup);
 // Description of setup
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  //createCanvas(windowWidth,windowHeight);
   $('#click-to-start').on('click', startGame);
-  $('#click-to-begin').hide();
+//  $('#click-to-begin').hide();
 }
 
 function startGame() {
   $('#click-to-start').remove();
-  instruction();
+  roundOne();
 }
 
-function instruction() {
+/*function instruction() {
   $('#click-to-begin').show();
   push();
   textAlign(CENTER);
@@ -99,8 +106,38 @@ function instruction() {
   pop();
   $('#click-to-begin').on('click', roundOne);
 
-}
+}*/
 
 function roundOne() {
-  $('#click-to-begin').remove();
+//  $('#click-to-begin').remove();
+// choose between the possible names
+  answers = [];
+// Loop between all the answers
+for (let i = 0; i < NUM_OPTIONS; i++) {
+  console.log('choices');
+  let answer = names[Math.floor(Math.random() * names.length)];
+  addButton(answer);
+  answers.push(answer);
+}
+
+}
+
+function addButton(label) {
+  // Create a div with jQuery using HTML
+  let $button = $('<div class="guess"></div>');
+  // Set the text in the div to our label
+  $button.text(label);
+  // Turn the div into a button using jQuery UI's .button() method
+  $button.button();
+  // Listen for a click on the button which means the user has guessed
+  $button.on('click', function() {
+    // If the button they clicked on has a label matching the correct answer...
+    chosenName = $(this).text();
+    console.log(chosenName);
+      // Remove all the buttons
+      $('.guess').remove();
+      roundTwo()
+  });
+  // Finally, add the button to the page so we can see it
+  $('body').append($button);
 }
