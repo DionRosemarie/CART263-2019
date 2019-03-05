@@ -162,6 +162,8 @@ let animals = [
 let correctAnimal;
 // We also track all the possibly answers (mostly so we can switch their order around)
 let answers = [];
+// tracking the score
+let score;
 
 // How many possible answers there are per round
 const NUM_OPTIONS = 5;
@@ -175,6 +177,7 @@ $(document).ready(setup);
 // to actually start the game.
 function setup() {
   $('#click-to-begin').on('click',startGame);
+  $('#numScore').hide();
 }
 
 // startGame()
@@ -182,7 +185,10 @@ function setup() {
 // Remove the click to begin and set up a round of play
 function startGame() {
   $('#click-to-begin').remove();
-
+  // Only show the div when the game starts
+  $('#numScore').show();
+  // Setting the score to zero
+  score = 0;
   newRound();
 }
 
@@ -255,12 +261,16 @@ function addButton(label) {
     if ($(this).text() === correctAnimal) {
       // Remove all the buttons
       $('.guess').remove();
+      score++;
+      $('#numScore').text(score);
       // Start a new round
       setTimeout(newRound,1000);
     }
     else {
       // Otherwise they were wrong, so shake the button
       $(this).effect('shake');
+      score = 0;
+      $('#numScore').text(score);
       // And say the correct animal again to "help" them
       speakAnimal(correctAnimal);
     }
