@@ -67,6 +67,9 @@ let place = [
   "at the movie theater"
 ];
 
+// How many choices by question the user has
+const NUM_OPTIONS = 3;
+
 // Get setup!
 $(document).ready(setup);
 
@@ -76,9 +79,28 @@ $(document).ready(setup);
 // Description of setup
 
 function setup() {
+  createCanvas(windowWidth,windowHeight);
   $('#click-to-start').on('click', startGame);
+  $('#click-to-begin').hide();
 }
 
 function startGame() {
   $('#click-to-start').remove();
+  instruction();
+}
+
+function instruction() {
+  $('#click-to-begin').show();
+  push();
+  textAlign(CENTER);
+  textSize(20);
+  fill(0);
+  text("Choose between all the propose choices to create your own story", width/2, height/2);
+  pop();
+  $('#click-to-begin').on('click', roundOne);
+
+}
+
+function roundOne() {
+  $('#click-to-begin').remove();
 }
