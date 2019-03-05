@@ -22,7 +22,12 @@ let names = [
   "Catherine",
   "Fiona"
 ];
+let chosenAnswer;
 let chosenName;
+let chosenAnimal;
+let chosenAction;
+let chosenMoment;
+let chosenPlace;
 
 let animals = [
   "snake",
@@ -37,7 +42,7 @@ let animals = [
   "giraffe",
   "hippopotamus",
 ];
-let chosenAnimal;
+
 
 let actions = [
   "cries",
@@ -49,7 +54,7 @@ let actions = [
   "yells",
   "signs"
 ];
-let chosenAction;
+
 
 let moments = [
   "in the morning",
@@ -58,7 +63,7 @@ let moments = [
   "in the afternoon",
   "before noon"
 ];
-let chosenMoment;
+
 
 let places = [
   "in the shower",
@@ -70,12 +75,15 @@ let places = [
   "at the kitchen counter",
   "at the movie theater"
 ];
-let chosenPlace;
+
 
 let answers = [];
 
+let state = "one";
+
 // How many choices by question the user has
 const NUM_OPTIONS = 3;
+
 
 // Get setup!
 $(document).ready(setup);
@@ -96,32 +104,6 @@ function startGame() {
   roundOne();
 }
 
-/*function instruction() {
-  $('#click-to-begin').show();
-  push();
-  textAlign(CENTER);
-  textSize(20);
-  fill(0);
-  text("Choose between all the propose choices to create your own story", width/2, height/2);
-  pop();
-  $('#click-to-begin').on('click', roundOne);
-
-}*/
-
-function roundOne() {
-//  $('#click-to-begin').remove();
-// choose between the possible names
-  answers = [];
-// Loop between all the answers
-for (let i = 0; i < NUM_OPTIONS; i++) {
-  console.log('choices');
-  let answer = names[Math.floor(Math.random() * names.length)];
-  addButton(answer);
-  answers.push(answer);
-}
-
-}
-
 function addButton(label) {
   // Create a div with jQuery using HTML
   let $button = $('<div class="guess"></div>');
@@ -132,12 +114,130 @@ function addButton(label) {
   // Listen for a click on the button which means the user has guessed
   $button.on('click', function() {
     // If the button they clicked on has a label matching the correct answer...
-    chosenName = $(this).text();
-    console.log(chosenName);
+    chosenAnswer = $(this).text();
+    console.log(chosenAnswer);
       // Remove all the buttons
       $('.guess').remove();
-      roundTwo()
+
+      switch (state) {
+      case "one":
+      chosenName = chosenAnswer;
+      state = "two";
+      roundTwo();
+      break;
+
+      case "two":
+      chosenAnimal = chosenAnswer;
+      state = "three";
+      roundThree();
+      break;
+
+      case "three":
+      chosenAction = chosenAnswer;
+      state = "four";
+      roundFour();
+      break;
+
+      case "four":
+      chosenMoment = chosenAnswer;
+      state = "five";
+      roundFive();
+      break;
+
+      case "five":
+      chosenPlace = chosenAnswer;
+      state = "story";
+      story();
+      break;
+
+      }
+
   });
   // Finally, add the button to the page so we can see it
   $('body').append($button);
+}
+
+
+function roundOne() {
+// choose between the possible names
+  answers = [];
+// Loop between all the answers
+for (let i = 0; i < NUM_OPTIONS; i++) {
+  console.log('name');
+  let answer = names[Math.floor(Math.random() * names.length)];
+  addButton(answer);
+
+  answers.push(answer);
+  }
+
+
+}
+
+function roundTwo() {
+// choose between the possible names
+  answers = [];
+// Loop between all the answers
+for (let i = 0; i < NUM_OPTIONS; i++) {
+  console.log('animals');
+  let answer = animals[Math.floor(Math.random() * animals.length)];
+  addButton(answer);
+  answers.push(answer);
+  }
+
+}
+
+function roundThree() {
+// choose between the possible names
+  answers = [];
+// Loop between all the answers
+for (let i = 0; i < NUM_OPTIONS; i++) {
+  console.log('actions');
+  let answer = actions[Math.floor(Math.random() * actions.length)];
+  addButton(answer);
+  answers.push(answer);
+  }
+
+}
+
+function roundFour() {
+// choose between the possible names
+  answers = [];
+// Loop between all the answers
+for (let i = 0; i < NUM_OPTIONS; i++) {
+  console.log('moments');
+  let answer = moments[Math.floor(Math.random() * moments.length)];
+  addButton(answer);
+  answers.push(answer);
+  }
+
+}
+
+function roundFive() {
+// choose between the possible names
+  answers = [];
+// Loop between all the answers
+for (let i = 0; i < NUM_OPTIONS; i++) {
+  console.log('moments');
+  let answer = places[Math.floor(Math.random() * places.length)];
+  addButton(answer);
+  answers.push(answer);
+  }
+
+}
+
+function story() {
+  console.log(chosenName);
+var story = {
+  "start" : "Once upon a time, #name# the #animal# #action# #moment# #place#" ,
+  "name": [chosenName],
+  "animal" : [chosenAnimal],
+  "action" : [chosenAction],
+  "moment" : [chosenMoment],
+  "place" : [chosenPlace]
+
+}
+  var grammar = tracery.createGrammar(story);
+  var result = grammar.flatten("#start#");
+  console.log(result);
+
 }
