@@ -285,7 +285,9 @@ if (annyang) {
       $('.guess').each(function() {
         if ($(this).text() === correctAnimal) {
           $(this).effect('shake');
-          score = 0;
+          $('.guess').remove();
+          score--;
+          $('#numScore').text(score);
           newRound();
         }
       });
