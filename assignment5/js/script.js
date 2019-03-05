@@ -282,21 +282,23 @@ function addButton(label) {
 if (annyang) {
   var commands = {
     'I give up': function() {
-      $('.guess').each(function() {
-        if ($(this).text() === correctAnimal) {
+      $('.guess').each(function(){
+        if($(this).text() === correctAnimal){
           $(this).effect('shake');
-          $('.guess').remove();
-          score--;
-          $('#numScore').text(score);
-          newRound();
         }
       });
+      setTimeout(function(){
+        $('.guess').remove();
+        score = 0;
+        $('#numScore').text(score);
+        setTimeout(newRound,1500);
+      },1000);
     },
     'Say it again': function() {
       speakAnimal(correctAnimal);
     },
-    "I think it's *tag": function(tag) {
-      if (tag === correctAnimal){
+    "I think it's *animalName": function(animalName) {
+      if (animalName === correctAnimal){
         score++;
         $('#numScore').text(score);
         $('.guess').remove();
