@@ -239,4 +239,6 @@ function story(result) {
   $('#story').show();
   $('#story').text(result);
 
+  responsiveVoice.speak(result, 'UK English Male');
+
 }
