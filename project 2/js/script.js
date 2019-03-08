@@ -84,19 +84,16 @@ let state = "one";
 // How many choices by question the user has
 const NUM_OPTIONS = 3;
 
-
 // Get setup!
 $(document).ready(setup);
-
 
 // setup()
 //
 // Description of setup
 
 function setup() {
-  //createCanvas(windowWidth,windowHeight);
   $('#click-to-start').on('click', startGame);
-//  $('#click-to-begin').hide();
+  $('#story').hide();
 }
 
 function startGame() {
@@ -111,46 +108,47 @@ function addButton(label) {
   $button.text(label);
   // Turn the div into a button using jQuery UI's .button() method
   $button.button();
+  $button.css({"font-family":"Sniglet"});
   // Listen for a click on the button which means the user has guessed
   $button.on('click', function() {
     // If the button they clicked on has a label matching the correct answer...
     chosenAnswer = $(this).text();
     console.log(chosenAnswer);
-      // Remove all the buttons
-      $('.guess').remove();
+    // Remove all the buttons
+    $('.guess').remove();
 
-      switch (state) {
+    switch (state) {
       case "one":
-      chosenName = chosenAnswer;
-      state = "two";
-      roundTwo();
-      break;
+        chosenName = chosenAnswer;
+        state = "two";
+        roundTwo();
+        break;
 
       case "two":
-      chosenAnimal = chosenAnswer;
-      state = "three";
-      roundThree();
-      break;
+        chosenAnimal = chosenAnswer;
+        state = "three";
+        roundThree();
+        break;
 
       case "three":
-      chosenAction = chosenAnswer;
-      state = "four";
-      roundFour();
-      break;
+        chosenAction = chosenAnswer;
+        state = "four";
+        roundFour();
+        break;
 
       case "four":
-      chosenMoment = chosenAnswer;
-      state = "five";
-      roundFive();
-      break;
+        chosenMoment = chosenAnswer;
+        state = "five";
+        roundFive();
+        break;
 
       case "five":
-      chosenPlace = chosenAnswer;
-      state = "story";
-      story();
-      break;
+        chosenPlace = chosenAnswer;
+        state = "story";
+        story();
+        break;
 
-      }
+    }
 
   });
   // Finally, add the button to the page so we can see it
@@ -159,85 +157,86 @@ function addButton(label) {
 
 
 function roundOne() {
-// choose between the possible names
+  // choose between the possible names
   answers = [];
-// Loop between all the answers
-for (let i = 0; i < NUM_OPTIONS; i++) {
-  console.log('name');
-  let answer = names[Math.floor(Math.random() * names.length)];
-  addButton(answer);
-
-  answers.push(answer);
+  // Loop between all the answers
+  for (let i = 0; i < NUM_OPTIONS; i++) {
+    console.log('animals');
+    let answer = names[Math.floor(Math.random() * names.length)];
+    addButton(answer);
+    answers.push(answer);
   }
-
 
 }
 
 function roundTwo() {
-// choose between the possible names
+  // choose between the possible names
   answers = [];
-// Loop between all the answers
-for (let i = 0; i < NUM_OPTIONS; i++) {
-  console.log('animals');
-  let answer = animals[Math.floor(Math.random() * animals.length)];
-  addButton(answer);
-  answers.push(answer);
+  // Loop between all the answers
+  for (let i = 0; i < NUM_OPTIONS; i++) {
+    console.log('animals');
+    let answer = animals[Math.floor(Math.random() * animals.length)];
+    addButton(answer);
+    answers.push(answer);
   }
 
 }
 
 function roundThree() {
-// choose between the possible names
+  // choose between the possible names
   answers = [];
-// Loop between all the answers
-for (let i = 0; i < NUM_OPTIONS; i++) {
-  console.log('actions');
-  let answer = actions[Math.floor(Math.random() * actions.length)];
-  addButton(answer);
-  answers.push(answer);
+  // Loop between all the answers
+  for (let i = 0; i < NUM_OPTIONS; i++) {
+    console.log('actions');
+    let answer = actions[Math.floor(Math.random() * actions.length)];
+    addButton(answer);
+    answers.push(answer);
   }
 
 }
 
 function roundFour() {
-// choose between the possible names
+  // choose between the possible names
   answers = [];
-// Loop between all the answers
-for (let i = 0; i < NUM_OPTIONS; i++) {
-  console.log('moments');
-  let answer = moments[Math.floor(Math.random() * moments.length)];
-  addButton(answer);
-  answers.push(answer);
+  // Loop between all the answers
+  for (let i = 0; i < NUM_OPTIONS; i++) {
+    console.log('moments');
+    let answer = moments[Math.floor(Math.random() * moments.length)];
+    addButton(answer);
+    answers.push(answer);
   }
 
 }
 
 function roundFive() {
-// choose between the possible names
+  // choose between the possible names
   answers = [];
-// Loop between all the answers
-for (let i = 0; i < NUM_OPTIONS; i++) {
-  console.log('moments');
-  let answer = places[Math.floor(Math.random() * places.length)];
-  addButton(answer);
-  answers.push(answer);
+  // Loop between all the answers
+  for (let i = 0; i < NUM_OPTIONS; i++) {
+    console.log('moments');
+    let answer = places[Math.floor(Math.random() * places.length)];
+    addButton(answer);
+    answers.push(answer);
   }
 
 }
 
-function story() {
-  console.log(chosenName);
-var story = {
-  "start" : "Once upon a time, #name# the #animal# #action# #moment# #place#" ,
-  "name": [chosenName],
-  "animal" : [chosenAnimal],
-  "action" : [chosenAction],
-  "moment" : [chosenMoment],
-  "place" : [chosenPlace]
+function story(result) {
+  console.log("story there");
 
-}
+  var story = {
+    "start": "Once upon a time, #name# the #animal# #action# #moment# #place#",
+    "name": [chosenName],
+    "animal": [chosenAnimal],
+    "action": [chosenAction],
+    "moment": [chosenMoment],
+    "place": [chosenPlace]
+
+  }
   var grammar = tracery.createGrammar(story);
   var result = grammar.flatten("#start#");
   console.log(result);
+  $('#story').show();
+  $('#story').text(result);
 
 }
