@@ -93,6 +93,7 @@ $(document).ready(setup);
 
 function setup() {
   $('#click-to-start').on('click', startGame);
+  $('#instructions').hide();
   $('#story').hide();
 }
 
@@ -166,7 +167,8 @@ function roundOne() {
     addButton(answer);
     answers.push(answer);
   }
-
+  $('#instructions').show();
+  $('#instructions').text('Chose a name!');
 }
 
 function roundTwo() {
@@ -179,7 +181,7 @@ function roundTwo() {
     addButton(answer);
     answers.push(answer);
   }
-
+  $('#instructions').text('Chose an animal!');
 }
 
 function roundThree() {
@@ -192,7 +194,7 @@ function roundThree() {
     addButton(answer);
     answers.push(answer);
   }
-
+  $('#instructions').text('Chose an action!');
 }
 
 function roundFour() {
@@ -205,7 +207,7 @@ function roundFour() {
     addButton(answer);
     answers.push(answer);
   }
-
+$('#instructions').text('Chose a moment!');
 }
 
 function roundFive() {
@@ -218,11 +220,12 @@ function roundFive() {
     addButton(answer);
     answers.push(answer);
   }
-
+$('#instructions').text('Chose an place!');
 }
 
 function story(result) {
   console.log("story there");
+  $('#instructions').hide();
 
   var story = {
     "start": "Once upon a time, #name# the #animal# #action# #moment# #place#",
@@ -231,8 +234,8 @@ function story(result) {
     "action": [chosenAction],
     "moment": [chosenMoment],
     "place": [chosenPlace]
-
   }
+
   var grammar = tracery.createGrammar(story);
   var result = grammar.flatten("#start#");
   console.log(result);
