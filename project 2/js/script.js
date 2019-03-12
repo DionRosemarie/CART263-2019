@@ -95,17 +95,14 @@ $(document).ready(setup);
 
 function setup() {
 // displaying the different div needed at this part
-  $('#click-to-start').on('click', startGame);
+//$('#click-to-start').on('click', roundOne);
+$('#click-to-start').unbind('click').click(roundOne);
+    console.log("blablablab");
+
   $('#instructions').hide();
   $('#question').hide();
   $('#narrator').hide();
   $('#story').hide();
-}
-
-function startGame() {
-// starting the game
-  $('#click-to-start').remove();
-  roundOne();
 }
 
 function addButton(label) {
@@ -176,8 +173,9 @@ function addButton(label) {
   $('body').append($button);
 }
 
-
 function roundOne() {
+  console.log('roundone')
+  $('#click-to-start').remove();
   // choose between the possible names
   answers = [];
   // Loop between all the answers
@@ -325,7 +323,7 @@ function narrator() {
     responsiveVoice.speak(respond, 'UK English Male');
     $('#narrator').show();
     $('#narrator').text(respond);
-    setTimeout(setup,2500);
+  //  setTimeout(setup,2500);
     }
 // possible answers for the player to use
     let commands = {
