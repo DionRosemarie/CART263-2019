@@ -82,6 +82,8 @@ let answers = [];
 
 // start the game
 let state = "one";
+// variable for the background
+let clown;
 
 // How many choices by question the user has
 const NUM_OPTIONS = 3;
@@ -92,7 +94,6 @@ $(document).ready(setup)
 // setup()
 //
 // Description of setup
-
 function setup() {
 // displaying the different div needed at this part
 //$('#click-to-start').on('click', roundOne);
@@ -261,34 +262,10 @@ function storyOne() {
   $('#story').show();
   $('#story').text(result);
   responsiveVoice.speak(result, 'UK English Female',{pitch:1},{rate:1});
-  animationText();
 // set a timeout before showing the next step of the story
   setTimeout(narrator,5000);
 }
-function animationText() {
-  console.log('text animation');
-  var text = $('#story');
 
-  var split = new SplitText(text);
-
-  function random(min, max){
-  	return (Math.random() * (max - min)) + min;
-  }
-
-  $(split.chars).each(function(i){
-  	TweenMax.from($(this), 2.5, {
-  		opacity: 0,
-  		x: random(-500, 500),
-  		y: random(-500, 500),
-  		z: random(-500, 500),
-  		scale: .1,
-  		delay: i * .02,
-  		yoyo: true,
-  		repeat: -1,
-  		repeatDelay: 10
-  	});
-  });
-}
 
 // function for the story to be display on the screen
 function storyTwo() {
@@ -358,9 +335,11 @@ function narrator() {
 
 function endGame() {
   $('#instructions').remove();
+  $('#story').remove();
+  $('#question').remove();
   $('#narrator').show();
   $('#narrator').css({'color':'white'});
   $('#narrator').text('You are missing something');
   $('#narrator').fadeOut(3000);
-  $('body').css({"background-color":"black"});
+  $('body').css({'background-image':'url("assets/images/clown.jpg")'});;
 }
