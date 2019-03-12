@@ -95,6 +95,7 @@ function setup() {
   $('#click-to-start').on('click', startGame);
   $('#instructions').hide();
   $('#question').hide();
+  $('#narrator').hide();
   $('#story').hide();
 }
 
@@ -262,17 +263,21 @@ function narrator() {
     let showMore = function() {
     respond = "once upon a time, the player of this game decided to see more"
     responsiveVoice.speak(respond, 'UK English Male');
+    $('#narrator').show();
+    $('#narrator').text(respond);
     }
     let showLess = function() {
     respond = "Are you sure you don't want me to continue to tell you a story?"
     responsiveVoice.speak(respond, 'UK English Male');
+    $('#narrator').show();
+    $('#narrator').text(respond);
     }
     let commands = {
       'Yes':showMore,
       'No' : showLess,
     }
     annyang.addCommands(commands);
-   annyang.start();
+    annyang.start();
     }
 
 }
