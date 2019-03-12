@@ -87,7 +87,7 @@ let state = "one";
 const NUM_OPTIONS = 3;
 
 // Get setup!
-$(document).ready(setup);
+$(document).ready(setup)
 
 // setup()
 //
@@ -97,12 +97,11 @@ function setup() {
 // displaying the different div needed at this part
 //$('#click-to-start').on('click', roundOne);
 $('#click-to-start').unbind('click').click(roundOne);
-    console.log("blablablab");
-
   $('#instructions').hide();
   $('#question').hide();
   $('#narrator').hide();
   $('#story').hide();
+
 }
 
 function addButton(label) {
@@ -277,20 +276,20 @@ function storyTwo() {
   var storyTwo = {
     "start": "Everything was going #adjective# when suddenly Jack the #job# who loves to #hobby# came in running with a #object# in the room. Everybody who witnessed the scene started #verb# and decided to do #movement# to help the situation. But wait! said #name#, what is the noise I hear? This is when the #hero# of the situation came to the rescue. Berret the #qualitie# ran into the window on his #transport# and knocked down Jack. Everybody was #emotion# of how everything ended and went back home from the #place#. #name# the #animal# was so #emotion# that she went to see Berret to give him a #gift#. The end",
 // the different variable that the player chose
-    "adjective": ["great","awesome","poorly","horribly","weirdly"],
-    "job": ["pediatrician","accountant","janitor","interior designer","chemist"],
-    "hobby": ["play chess","look at the sky","run in the rain","dance in the street","cry in silence", "scream at people"],
-    "object": ["machete","lollypop","toothbrush","glass of milk","left shoe","purple lipstick","microwave"],
-    "verb": ["laughing","rolling on the floor","screaming","signing the wheels on the bus","throwing conffeti","eating cake","counting to 1 to 10","playing hide and seek"],
-    "movement": ["belly rolls","the bacon","a manifestation","a dance party", "do an Instagram live", "follow each other on social media"],
+    "adjective":[adjective],
+    "job":[job],
+    "hobby":[hobby],
+    "object":[object],
+    "verb":[verb],
+    "movement":[movement],
     "name": [chosenName],
-    "hero" : ["paladin","warrior","gladiator","knight"],
-    "qualitie": ["courageous","shy","bored","sucessful","charming","foolish","concerned"],
-    "transport": ["tramway","tesla","taxi","STM bus","camel","cow","pogo stick"],
-    "emotion": ["sad","happy","depresse","joyful","enthousiastic","grateful","impressed","confused","grumpy","defeated","proud","frightened"],
+    "hero" : [hero],
+    "qualitie": [qualitie],
+    "transport": [transport],
+    "emotion": [emotion],
     "place": [chosenPlace],
     "animal": [chosenAnimal],
-    "gift": ["kiss","slap","kinder surprise","plane ticket","scone","cinema ticket","pack of gum"]
+    "gift":[gift]
   }
 
 // variable to use tracery

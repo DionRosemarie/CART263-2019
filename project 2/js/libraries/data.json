@@ -1,0 +1,100 @@
+{
+"adjectives": [
+  "great",
+  "awesome",
+  "poorly",
+  "horribly",
+  "weirdly"
+],
+"jobs": [
+  "pediatrician",
+  "accountant",
+  "janitor",
+  "interior designer",
+  "chemist"
+],
+"hobbies": [
+  "play chess",
+  "look at the sky",
+  "run in the rain",
+  "dance in the street",
+  "cry in silence",
+  "scream at people"
+],
+"objects": [
+  "machete",
+  "lollypop",
+  "toothbrush",
+  "glass of milk",
+  "left shoe",
+  "purple lipstick",
+  "microwave"
+],
+"verbs": [
+  "laughing",
+  "rolling on the floor",
+  "screaming",
+  "signing the wheels on the bus",
+  "throwing conffeti",
+  "eating cake",
+  "counting to 1 to 10",
+  "playing hide and seek"
+],
+"movements": [
+  "belly rolls",
+  "the bacon",
+  "a manifestation",
+  "a dance party",
+  "do an Instagram live",
+  "follow each other on social media"
+],
+
+"heroes" : [
+  "paladin",
+  "warrior",
+  "gladiator",
+  "knight"
+],
+"qualities": [
+  "courageous",
+  "shy",
+  "bored",
+  "sucessful",
+  "charming",
+  "foolish",
+  "concerned"
+],
+"transports": [
+  "tramway",
+  "tesla",
+  "taxi",
+  "STM bus",
+  "camel",
+  "cow",
+  "pogo stick"
+],
+"emotions":[
+  "sad",
+  "happy",
+  "depresse",
+  "joyful",
+  "enthousiastic",
+  "grateful",
+  "impressed",
+  "confused",
+  "grumpy",
+  "defeated",
+  "proud",
+  "frightened"
+],
+
+"gifts": [
+  "kiss",
+  "slap",
+  "kinder surprise",
+  "plane ticket",
+  "scone",
+  "cinema ticket",
+  "pack of gum"
+]
+}
