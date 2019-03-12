@@ -161,7 +161,7 @@ function addButton(label) {
         chosenPlace = chosenAnswer;
         state = "story";
     // the story is finish
-        story();
+        storyOne();
         break;
 
     }
@@ -239,7 +239,7 @@ function roundFive() {
 }
 
 // function for the story to be display on the screen
-function story(result) {
+function storyOne() {
   console.log("story there");
 // hiding the text of each state
   $('#instructions').hide();
@@ -265,6 +265,41 @@ function story(result) {
   setTimeout(narrator,5000);
 }
 
+// function for the story to be display on the screen
+function storyTwo() {
+  console.log("story two there");
+  $('#question').hide();
+
+// varible to make a random story
+  var storyTwo = {
+    "start": "Everything was going #adjective# when suddenly Jack the #job# who loves to #hobby# came in running with a #object# in the room. Everybody who witnessed the scene started #verb# and decided to do #movement# to help the situation. But wait! said #name#, what is the noise I hear? This is when the #hero# of the situation came to the rescue. Berret the #qualitie# ran into the window on his #transport# and knocked down Jack. Everybody was #emotion# of how everything ended and went back home from the #place#. #name# the #animal# was so #emotion# that she went to see Berret to give him a #gift#. The end",
+// the different variable that the player chose
+    "adjective": ["great","awesome","poorly","horribly","weirdly"],
+    "job": ["pediatrician","accountant","janitor","interior designer","chemist"],
+    "hobby": ["play chess","look at the sky","run in the rain","dance in the street","cry in silence", "scream at people"],
+    "object": ["machete","lollypop","toothbrush","glass of milk","left shoe","purple lipstick","microwave"],
+    "verb": ["laughing","rolling on the floor","screaming","signing the wheels on the bus","throwing conffeti","eating cake","counting to 1 to 10","playing hide and seek"],
+    "movement": ["belly rolls","the bacon","a manifestation","a dance party", "do an Instagram live", "follow each other on social media"],
+    "name": [chosenName],
+    "hero" : ["paladin","warrior","gladiator","knight"],
+    "qualitie": ["courageous","shy","bored","sucessful","charming","foolish","concerned"],
+    "transport": ["tramway","tesla","taxi","STM bus","camel","cow","pogo stick"],
+    "emotion": ["sad","happy","depresse","joyful","enthousiastic","grateful","impressed","confused","grumpy","defeated","proud","frightened"],
+    "place": [chosenPlace],
+    "animal": [chosenAnimal],
+    "gift": ["kiss","slap","kinder surprise","plane ticket","scone","cinema ticket","pack of gum"]
+  }
+
+// variable to use tracery
+  var grammar = tracery.createGrammar(storyTwo);
+  var resultTwo = grammar.flatten("#start#");
+  console.log(storyTwo);
+  $('#story').show();
+  $('#story').text(story);
+  $('#story').text(resultTwo);
+  responsiveVoice.speak(resultTwo, 'UK English Male');
+}
+
 // Interaction with the narrator of the story
 function narrator() {
   console.log('narrator');
@@ -277,19 +312,17 @@ function narrator() {
   if (annyang) {
 // if the player wants to continue
     let showMore = function() {
-    respond = "once upon a time, the player of this game decided to see more"
-    responsiveVoice.speak(respond, 'UK English Male');
-    $('#narrator').show();
-    $('#narrator').text(respond);
+    storyTwo();
     }
 // if the player doesn't want to continue
     let showLess = function() {
-    respond = "Are you sure you don't want me to continue to tell you a story?"
+    respond = "You are missing something"
     responsiveVoice.speak(respond, 'UK English Male');
     $('#narrator').show();
     $('#narrator').text(respond);
+    setTimeout(setup,2500);
     }
-// possible answers for the player to use 
+// possible answers for the player to use
     let commands = {
       'Yes':showMore,
       'No' : showLess,
