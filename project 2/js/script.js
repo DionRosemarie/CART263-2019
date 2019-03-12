@@ -109,7 +109,13 @@ function addButton(label) {
   $button.text(label);
   // Turn the div into a button using jQuery UI's .button() method
   $button.button();
-  $button.css({"font-family":"Sniglet"});
+  $button.css({
+    "font-family": "Sniglet",
+    display: 'block',
+    width: 100,
+    margin: 'auto',
+    marginTop: 10,
+  });
   // Listen for a click on the button which means the user has guessed
   $button.on('click', function() {
     // If the button they clicked on has a label matching the correct answer...
@@ -207,7 +213,7 @@ function roundFour() {
     addButton(answer);
     answers.push(answer);
   }
-$('#instructions').text('Chose a moment!');
+  $('#instructions').text('Chose a moment!');
 }
 
 function roundFive() {
@@ -220,7 +226,7 @@ function roundFive() {
     addButton(answer);
     answers.push(answer);
   }
-$('#instructions').text('Chose an place!');
+  $('#instructions').text('Chose an place!');
 }
 
 function story(result) {
