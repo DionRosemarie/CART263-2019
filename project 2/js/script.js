@@ -260,7 +260,7 @@ function storyOne() {
   console.log(result);
   $('#story').show();
   $('#story').text(result);
-  responsiveVoice.speak(result, 'UK English Male');
+  responsiveVoice.speak(result, 'UK English Female',{pitch:1},{rate:1});
 // set a timeout before showing the next step of the story
   setTimeout(narrator,5000);
 }
@@ -269,7 +269,6 @@ function storyOne() {
 function storyTwo() {
   console.log("story two there");
   $('#question').hide();
-
 // varible to make a random story
   var storyTwo = {
     "start": "Everything was going #adjective# when suddenly Jack the #job# who loves to #hobby# came in running with a #object# in the room. Everybody who witnessed the scene started #verb# and decided to do #movement# to help the situation. But wait! said #name#, what is the noise I hear? This is when the #hero# of the situation came to the rescue. Berret the #qualitie# ran into the window on his #transport# and knocked down Jack. Everybody was #emotion# of how everything ended and went back home from the #place#. #name# the #animal# was so #emotion# that she went to see Berret to give him a #gift#. The end",
@@ -297,7 +296,7 @@ function storyTwo() {
   $('#story').show();
   $('#story').text(story);
   $('#story').text(resultTwo);
-  responsiveVoice.speak(resultTwo, 'UK English Male');
+  responsiveVoice.speak(resultTwo, 'UK English Male',{rate:0.5,pitch:0.5});
 }
 
 // Interaction with the narrator of the story
@@ -326,8 +325,8 @@ function narrator() {
     annyang.addCommands(commands);
     annyang.start();
     }
-
 }
+
 
 function endGame() {
   $('#instructions').remove();
