@@ -301,6 +301,15 @@ function storyTwo() {
   responsiveVoice.speak(resultTwo, 'UK English Male');
 }
 
+function endGame() {
+  $('#instructions').remove();
+  $('#narrator').show();
+  $('#narrator').css({'color':'white'});
+  $('#narrator').text('You are missing something');
+  $('#narrator').fadeOut(3000);
+  $('body').css({"background-color":"black"});
+}
+
 // Interaction with the narrator of the story
 function narrator() {
   console.log('narrator');
@@ -317,11 +326,7 @@ function narrator() {
     }
 // if the player doesn't want to continue
     let showLess = function() {
-    respond = "You are missing something"
-    responsiveVoice.speak(respond, 'UK English Male');
-    $('#narrator').show();
-    $('#narrator').text(respond);
-  //  setTimeout(setup,2500);
+    endGame();
     }
 // possible answers for the player to use
     let commands = {
