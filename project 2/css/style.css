@@ -13,23 +13,38 @@ body {
 }
 
 #click-to-start {
+  background-color: white;
+  width: 300px;
+  height: 50px;
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 15px;
+  border-color: black;
   font-size: 2em;
   text-align: center;
   font-family: 'Sniglet', cursive;
-  margin-top: 250px;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #instructions {
-  font-size: 2em;
+  background-color: white;
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 15px;
+  border-color: black;
+  width:300px;
+  font-size: 27px;
   text-align: center;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 50px;
   font-family: 'Sniglet', cursive;
 }
 
 #story {
-  font-size: 2em;
+  font-size: 27px;
   text-align: center;
   margin-left: 100px;
   margin-right: 100px;
@@ -38,7 +53,7 @@ body {
 }
 
 #question {
-  font-size: 2em;
+  font-size: 27px;
   text-align: center;
   margin-left: 100px;
   margin-right: 100px;
@@ -47,7 +62,7 @@ body {
 }
 
 #narrator {
-  font-size: 2em;
+  font-size: 27px;
   text-align: center;
   margin-left: 100px;
   margin-right: 100px;

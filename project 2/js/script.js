@@ -122,6 +122,11 @@ function addButton(label) {
     width: 100,
     margin: 'auto',
     marginTop: 10,
+    backgroundColor: 'white',
+    borderRadius: 15,
+    borderStyle: 'solid',
+    borderColor: 'black',
+    borderWidth: 10
   });
   // Listen for a click on the button which means the user has guessed
   $button.on('click', function() {
