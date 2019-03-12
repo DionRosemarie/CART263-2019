@@ -243,8 +243,7 @@ function roundFive() {
 // function for the story to be display on the screen
 function storyOne() {
   console.log("story there");
-// hiding the text of each state
-  $('#instructions').hide();
+  $('#instructions').text('story time');
 // varible to make a random story
   var story = {
     "start": "Once upon a time, #name# the #animal# #action# #moment# #place#",
