@@ -236,7 +236,7 @@ function roundFive() {
     addButton(answer);
     answers.push(answer);
   }
-  $('#instructions').text('Chose an place!');
+  $('#instructions').text('Chose a place!');
 }
 
 // function for the story to be display on the screen
@@ -327,7 +327,7 @@ function narrator() {
   console.log('narrator');
 // Variable to interact with the player
   $('#question').show();
-  $('#question').text('Do you want me to continue?\n yes or no?');
+  $('#question').text('Do you want me to continue? yes or no? speak to me');
 
 // annyang
   var respond;
