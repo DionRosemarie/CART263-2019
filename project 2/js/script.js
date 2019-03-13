@@ -179,7 +179,7 @@ function roundOne() {
   answers = [];
   // Loop between all the answers
   for (let i = 0; i < NUM_OPTIONS; i++) {
-    console.log('animals');
+    console.log('name');
     let answer = names[Math.floor(Math.random() * names.length)];
     addButton(answer);
     answers.push(answer);
@@ -291,6 +291,25 @@ function storyTwo() {
     "animal": [chosenAnimal],
     "gift":[gift]
   }
+
+  var timer = 0;
+  if (timer < 270) {
+    for (var i=1; i<=200; i++) {
+    $('#story').animate({
+      width:["toggle","linear"],
+      height:["toggle","easeOutBounce"],
+      opacity: "toggle",
+    })
+  }
+}
+
+    window.setInterval(function(){
+
+      var randomColor = '#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
+      $('body').css({
+        'background-color' : randomColor,
+      });
+    }, 100);
 
 // variable to use tracery
   var grammar = tracery.createGrammar(storyTwo);
