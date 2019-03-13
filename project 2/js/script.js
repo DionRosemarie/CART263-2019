@@ -96,7 +96,6 @@ $(document).ready(setup)
 // Description of setup
 function setup() {
 // displaying the different div needed at this part
-//$('#click-to-start').on('click', roundOne);
 $('#click-to-start').unbind('click').click(roundOne);
   $('#instructions').hide();
   $('#question').hide();
@@ -296,13 +295,13 @@ function storyTwo() {
   if (timer < 270) {
     for (var i=1; i<=200; i++) {
     $('#story').animate({
-      width:["toggle","linear"],
       height:["toggle","easeOutBounce"],
       opacity: "toggle",
     })
   }
 }
 
+// setting the background color to random
     window.setInterval(function(){
 
       var randomColor = '#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
@@ -315,11 +314,11 @@ function storyTwo() {
   var grammar = tracery.createGrammar(storyTwo);
   var resultTwo = grammar.flatten("#start#");
   console.log(storyTwo);
+  $('#instructions').text('STORY PARTY!!!!');
   $('#story').show();
   $('#story').text(story);
   $('#story').text(resultTwo);
-  responsiveVoice.speak(resultTwo, 'UK English Male',{rate:0.5,pitch:0.5});
-
+  responsiveVoice.speak(resultTwo, 'UK English Male',{rate:1.2,pitch:1});
 }
 
 
@@ -328,7 +327,7 @@ function narrator() {
   console.log('narrator');
 // Variable to interact with the player
   $('#question').show();
-  $('#question').text('Do you want me to continue?');
+  $('#question').text('Do you want me to continue?\n yes or no?');
 
 // annyang
   var respond;
@@ -351,7 +350,7 @@ function narrator() {
     }
 }
 
-
+// if the player says no
 function endGame() {
   $('#instructions').remove();
   $('#story').remove();
@@ -361,4 +360,12 @@ function endGame() {
   $('#narrator').text('You are missing something');
   $('#narrator').fadeOut(3000);
   $('body').css({'background-image':'url("assets/images/clown.jpg")'});;
+}
+
+// if the player says yes
+function endGameTwo() {
+  $('#instructions').remove();
+  $('#story').remove();
+  $('#question').remove();
+  $('body').css({'background-color':'#30e0ff'});;
 }

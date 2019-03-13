@@ -64,10 +64,10 @@ body {
 }
 
 #narrator {
-  font-size: 27px;
+  font-size:100px;
   text-align: center;
   margin-left: 100px;
   margin-right: 100px;
-  margin-top: 50px;
+  margin-top: 250px;
   font-family: 'Sniglet', cursive;
 }
