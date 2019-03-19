@@ -55,10 +55,13 @@ function gotData(data) {
   // Same again for room
   let room = getRandomElement(data.rooms);
 
+  // Same again for room
+  let appliance = getRandomElement(data.appliances);
+
   // Now we can construct our description with a template string
   // We have the basic structure of a sentence and we substitute in the
   // values we've just calculated
-  let description = `${condiment} ${verb} like a ${cat} in a ${room}.`;
+  let description = `${condiment} ${verb} like a ${cat} in a ${room} with a ${appliance}.`;
 
   // Finally, we add it to the page and hey presto!
   $('body').append(description)
