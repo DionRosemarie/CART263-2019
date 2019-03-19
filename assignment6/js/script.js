@@ -81,3 +81,7 @@ function gotData(data) {
 function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
+
+function reload() {
+  location.reload();
+}
