@@ -36,11 +36,25 @@ let hihat;
 // Each array element is one beat and has a string with each
 // drum to play for that beat
 // x = kick, o = snare, * = hihat
-let pattern = ['x','*','xo*',' ','x','x','xo','*'];
+let patterns = [
+  'x',
+  '*o*',
+  'xo*',
+  ' ',
+  'x',
+  'xxxx',
+  'xoxoxox',
+  '*'];
+
+let pattern;
 // Which beat of the pattern we're at right now
 let patternIndex = 0;
 
 let beatStarted = false;
+
+let silence;
+let silenceMin = 0.2;
+let silenceMax = 0.4;
 // setup()
 //
 // Creat canvas, set up the synth and sound files.
@@ -57,6 +71,19 @@ function setup() {
       frequency: 220
     }
   });
+
+  var pingPongDelay = new Pizzicato.Effects.PingPongDelay({
+    feedback: 0.9,
+    time: 0.8,
+    mix: 0.7
+});
+
+var distortion = new Pizzicato.Effects.Distortion({
+    gain: 0.7
+});
+
+synth.addEffect(pingPongDelay);
+synth.addEffect(distortion);
 
   // Load the three drum sounds as wav files
   kick = new Pizzicato.Sound({
@@ -86,6 +113,9 @@ function setup() {
 // Using this to start the note and drum sequences to get around
 // user interaction (and to give the files time to load)
 function mousePressed() {
+  // random pattern when mouse
+  pattern = patterns[Math.floor(Math.random()*patterns.length)].split("");
+  silence = (Math.random()*(silenceMax-silenceMin)) + silenceMin;
   if (beatStarted === false) {
     setInterval(playNote,200);
     setInterval(playDrum,100);
@@ -102,9 +132,25 @@ function playNote() {
   let frequency = frequencies[Math.floor(Math.random() * frequencies.length)];
   // Set the synth's frequency
   synth.frequency = frequency;
-  // If it's note already play, play the synth
+
+  if (Math.random() < silence) {
   synth.play();
+  }
+  else {
+  synth.pause();
+  }
+  playLoop();
 }
+
+function playLoop() {
+  let timeoutSynth;
+  let MAX_NOTE_DURATION = 5;
+  let MIN_NOTE_LENGTH = 500;
+  // making math random betwwen a full number
+  let duration = (Math.floor(Math.random()*MAX_NOTE_DURATION)+1)*MIN_NOTE_LENGTH;
+  timeoutSynth = setTimeout(playNote, duration);
+}
+
 
 // playDrum()
 //
