@@ -1,0 +1,19 @@
+// Chatbot brain
+! version = 2.0
+
+// getting the random number selected with floor(random)
++ set #
+- <set num=<star>>
+
+// checking the number answered by the user
++ #
+// if it is higher
+* <star> > <get num> => pick a lower number
+// if it is lower
+* <star> < <get num> => pick a higher number
+// if it is the right answer
+* <star> == <get num> => you got it!
+
+// triggering the interaction at first with anything type in the box
++ *
+- Guess a number between 0 and 100
