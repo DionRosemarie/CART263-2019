@@ -1,131 +1,31 @@
 "use strict";
 
-/*****************
+/***********************************************
+For project 3, i'm going to do a game that make reference to the AI Eliza made by Joseph Weizenbeaum in 1964. The main goal of the game is going to try to crack the AI. It is going to try to change the subject, go around the subject, just like Eliza, but the user will need to stay focus and continue to ask question that is goig to break the AI. I decided to use RiveScript because it give me a lot of posibility in the scenario. This prototype is a really small example of what RiveScript can do. I had difficulty trying to understand how it works but with this, I covered the principal. I'm going to had further in animation with the AI once the scenario is all done like adding music or images to distract the user of his goal.
+***********************************************/
 
-Title of Project
-Author Name
+// variable for the answer giving by the computer
+let bot;
+// varibale for picking a random number
+let num;
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
-
-******************/
-// center point
-let centerX = 0.0, centerY = 0.0;
-
-let radius = 45, rotAngle = -90;
-let accelX = 0.0, accelY = 0.0;
-let deltaX = 0.0, deltaY = 0.0;
-let springing = 0.0009, damping = 0.98;
-
-//corner nodes
-let nodes = 8;
-
-//zero fill arrays
-let nodeStartX = [];
-let nodeStartY = [];
-let nodeX = [];
-let nodeY = [];
-let angle = [];
-let frequency = [];
-
-// soft-body dynamics
-let organicConstant = 100.0;
-
+// setup
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  angleMode(DEGREES);
-  //center shape in window
-  centerX = windowWidth / 2;
-  centerY = windowHeight / 2;
 
-  //initialize arrays to 0
-  for (let i = 0; i < nodes; i++){
-    nodeStartX[i] = 0;
-    nodeStartY[i] = 0;
-    nodeY[i] = 0;
-    nodeY[i] = 0;
-    angle[i] = 0;
-  }
+  // loading my bot
+  bot = new RiveScript();
+  bot.loadFile("js/brain.rive").then(brainReady).catch(brainError);
 
-  // iniitalize frequencies for corner nodes
-  for (let i = 0; i < nodes; i++){
-    frequency[i] = random(5, 12);
-  }
+  // linking my html to my comands
+  let button = select('#submit');
+  let user_input = select('#user_input');
+  let output = select('#output');
 
-  noStroke();
-  frameRate(30);
-}
+  // if mouse is pressed, send the answer
+  button.mousePressed(chat);
+  // anime the title with the library textilate
+  textAnimation();
 
-function draw() {
-  //fade background
-  fill(0, 100);
-  rect(0, 0, width, height);
-  drawShape();
-  moveShape();
-}
-
-function drawShape() {
-  //  calculate node  starting locations
-  for (let i = 0; i < nodes; i++){
-    nodeStartX[i] = centerX + cos(radians(rotAngle)) * radius;
-    nodeStartY[i] = centerY + sin(radians(rotAngle)) * radius;
-    rotAngle += 360.0 / nodes;
-  }
-
-  // draw polygon
-  curveTightness(organicConstant);
-  fill(0);
-  stroke(255);
-  beginShape();
-let spacing = map(mouseX, 0, width, 5, 100);
-for (let a = 0; a< 360; a+= spacing){
-  let x = 200 * sin(a) +300;
-  let y = 200 * cos(a) +300;
-  vertex(x,y)
-}
-endShape(CLOSE);
-}
-
-function moveShape() {
-
-  // create springing effect
-  deltaX *= springing;
-  deltaY *= springing;
-  accelX += deltaX;
-  accelY += deltaY;
-
-  // move predator's center
-  centerX += accelX;
-  centerY += accelY;
-
-  // slow down springing
-  accelX *= damping;
-  accelY *= damping;
-
-  // change curve tightness
-  organicConstant = 1 - ((abs(accelX) + abs(accelY)) * 0.1);
-
-  //move nodes
-  for (let i = 0; i < nodes; i++){
-    nodeX[i] = nodeStartX[i] + sin(radians(angle[i])) * (accelX * 2);
-    nodeY[i] = nodeStartY[i] + sin(radians(angle[i])) * (accelY * 2);
-    angle[i] += frequency[i];
-  }
-
-  if (mouseIsPressed) {
-nodes += 4;
-console.log(nodes);
-} else {
-  nodes = 8;
-}
-}
-
-
-/* function setup() {
-console.log();
-textAnimation();
-$('.show').click(second);
-$('#second').hide();
 }
 
 function textAnimation() {
@@ -135,7 +35,7 @@ function textAnimation() {
            delay: 200,
        },
        out: {
-           effect: 'fadeOut'
+           effect: 'rollOut'
        },
        loop: false,
        minDisplayTime: 5000,
@@ -143,10 +43,43 @@ function textAnimation() {
    });
 };
 
-function second() {
-  console.log('there');
-  $('.title').hide();
-  $('.show').hide();
-  $('#second').show();
+// if everything runs normally, the brain si ready
+function brainReady() {
+  console.log('chatbot ready');
+  bot.sortReplies();
+  num = floor(random(100) + 1);
+}
 
-}*/
+// if something goes wrong, the brain is not ready
+function brainError() {
+  console.log('chatbot error');
+}
+
+// once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
+function chat() {
+  // select in the box what the user wrote
+  let input = $('#user_input').val();
+  // path to the brain of the bot and see if the answer of the user match the scenario
+  bot.reply("local_user", input).then(function(reply) {
+    console.log(reply);
+    // show the answer of the scenario in the reply html box
+    $('#output').html(reply);
+    responsiveVoice.speak(reply, 'UK English Female', {
+      pitch: 1
+    }, {
+      rate: 1
+    });
+  });
+  // path to the brain of the bot and see if the answer of the user match the random number selected
+  let reply = bot.reply("local_user", "set " + num).then(function(reply) {
+    console.log(num);
+    // show the answer of the scenario in the reply html box
+    $('#output').html(reply);
+    responsiveVoice.speak(reply, 'UK English Female', {
+      pitch: 1
+    }, {
+      rate: 1
+    });
+  });
+
+}

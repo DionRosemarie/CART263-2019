@@ -6,38 +6,75 @@ so the canvas is flush with the top left corner.
 
 **********************************************/
 
-@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 
 body {
-  background-color: black;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+background-color: black;
+margin: 0;
+padding: 0;
+height: 100vh;
 }
 
 .title {
+  position: fixed;
+  font-size: 60px;
+  color: white;
+  font-family: 'Indie Flower', cursive;
+  margin-left: 220px;;
+  margin-right: auto;
+  width:800px;
+  margin-top: 200px;
+  letter-spacing:15px;
+}
+
+.user {
+  position: fixed;
   font-size: 30px;
   color: white;
-  font-family: 'Major Mono Display', monospace;
-  margin-left: auto;
-  margin-right: auto;
-  width:200px;
-  margin-top: 250px;
-  letter-spacing:15px;
+  font-family: 'Indie Flower', cursive;
+  margin-top: 280px;
+  margin-left: 400px;
 }
 
-.show {
-  font-size: 15px;
+#user_input {
+  position: fixed;
+  font-family: 'Indie Flower', cursive;
   color: white;
-  font-family: 'Major Mono Display', monospace;
-  margin-left: auto;
-  margin-right: auto;
-  width:350px;
-  height: 20px;
-  margin-top: 30px;
-  letter-spacing:15px;
+  font-size: 20px;
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: white;
+  background-color: black;
+  padding-left: 10px;
+  index: 1;
 }
 
-#second{
+#submit {
+  position: fixed;
+  font-family: 'Indie Flower', cursive;
+  color: white;
+  font-size: 20px;
+  border-color: black;
+  height: 30px;
+  margin-left: 320px;
+  background-color: black;
+}
+
+.bot {
+  position: fixed;
+  width : 500px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  font-family: 'Indie Flower', cursive;
+  margin-top: 340px;
+  margin-left: 320px;
+}
+
+#particles-js{
  height: 100%;
+ opacity: 0.3;
+ index: -1;
 }
