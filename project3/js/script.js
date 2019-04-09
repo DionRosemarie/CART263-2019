@@ -22,7 +22,11 @@ function setup() {
   let output = select('#output');
 
  button.mousePressed(chat);
- 
+ $('#submit').on('click', function(){
+    clearSendTextbox();
+ });
+
+
   // anime the title with the library textilate
   textAnimation();
   setTimeout(begin,4000);
@@ -111,4 +115,8 @@ function chat() {
     });
   });
 
+}
+
+function clearSendTextbox(){
+	$('#user_input').val('');
 }

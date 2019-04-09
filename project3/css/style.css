@@ -105,4 +105,6 @@ height: 100vh;
   margin-left: auto;
   margin-right: auto;
   margin-top: 80px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }

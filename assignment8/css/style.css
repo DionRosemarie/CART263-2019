@@ -8,73 +8,46 @@ so the canvas is flush with the top left corner.
 
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
-
-body {
-background-color: black;
-margin: 0;
-padding: 0;
-height: 100vh;
+* {
+ font-family: Arial;
+ font-size: 12pt;
 }
-
-.title {
-  position: fixed;
-  font-size: 60px;
-  color: white;
-  font-family: 'Indie Flower', cursive;
-  margin-left: 220px;;
-  margin-right: auto;
-  width:800px;
-  margin-top: 200px;
-  letter-spacing:15px;
+.chat {
+ width: 400px;
+ height: 90%;
+ position: fixed;
+ overflow: scroll;
 }
-
-.user {
-  position: fixed;
-  font-size: 30px;
-  color: white;
-  font-family: 'Indie Flower', cursive;
-  margin-top: 280px;
-  margin-left: 400px;
+.actions {
+ position: fixed;
+ bottom: 0;
+ display: block;
+ width: 100%;
 }
-
-#user_input {
-  position: fixed;
-  font-family: 'Indie Flower', cursive;
-  color: white;
-  font-size: 20px;
-  width: 300px;
-  height: 30px;
-  border-radius: 5px;
-  border-color: white;
-  background-color: black;
-  padding-left: 10px;
-  index: 1;
+.actions input{
+ height: 30px;
+ display: block;
+ width: 100%;
+ outline: 0;
+ border-top: 0;
+ border-left: 0;
+ border-right: 0;
 }
-
-#submit {
-  position: fixed;
-  font-family: 'Indie Flower', cursive;
-  color: white;
-  font-size: 20px;
-  border-color: black;
-  height: 30px;
-  margin-left: 320px;
-  background-color: black;
+.messages div {
+ max-width: 60%;
+ display: block;
+ margin: 5px;
+ padding: 10px;
+ border-radius: 7px;
 }
-
-.bot {
-  position: fixed;
-  width : 500px;
-  text-align: center;
-  font-size: 30px;
-  color: white;
-  font-family: 'Indie Flower', cursive;
-  margin-top: 340px;
-  margin-left: 320px;
+.messages .bot {
+ text-align: left;
+ margin-right: auto;
+ background: #001f3f;
+ color: white;
 }
-
-#particles-js{
- height: 100%;
- opacity: 0.3;
- index: -1;
+.messages .self {
+ text-align: right;
+ margin-left: auto;
+ background: #DDD
 }

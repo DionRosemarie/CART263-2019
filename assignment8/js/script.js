@@ -16,70 +16,31 @@ function setup() {
   bot = new RiveScript();
   bot.loadFile("js/brain.rive").then(brainReady).catch(brainError);
 
-  // linking my html to my comands
-  let button = select('#submit');
-  let user_input = select('#user_input');
-  let output = select('#output');
-
-  // if mouse is pressed, send the answer
-  button.mousePressed(chat);
-  // anime the title with the library textilate
-  textAnimation();
-
+  const message_container = document.querySelector('.messages');
+  const form = document.querySelector('form');
+  const input_box = document.querySelector('input');
+  form.addEventListener(‘submit’, (e) => {
+   e.preventDefault();
+   selfReply(input_box.value);
+   input_box.value = ‘’;
+  });
 }
+  function botReply(message){
+   message_container.innerHTML += `<div class=”bot”>${message}</div>`;
+   location.href = ‘#edge’;
+  }
+  function selfReply(message){
+   message_container.innerHTML += `<div class=”self”>${message}</div>`;
+   location.href = ‘#edge’;
 
-function textAnimation() {
-   $('.title').textillate({
-      in : {
-           effect:'fadeIn',
-           delay: 200,
-       },
-       out: {
-           effect: 'rollOut'
-       },
-       loop: false,
-       minDisplayTime: 5000,
-
+   bot.reply(“local-user”, message).then(function(reply) {
+   botReply(reply);
    });
-};
-
-// if everything runs normally, the brain si ready
-function brainReady() {
-  console.log('chatbot ready');
-  bot.sortReplies();
-  num = floor(random(100) + 1);
-}
-
-// if something goes wrong, the brain is not ready
-function brainError() {
-  console.log('chatbot error');
-}
-
-// once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
-function chat() {
-  // select in the box what the user wrote
-  let input = $('#user_input').val();
-  // path to the brain of the bot and see if the answer of the user match the scenario
-  bot.reply("local_user", input).then(function(reply) {
-    console.log(reply);
-    // show the answer of the scenario in the reply html box
-    $('#output').html(reply);
-    responsiveVoice.speak(reply, 'UK English Female', {
-      pitch: 1
-    }, {
-      rate: 1
-    });
-  });
-  // path to the brain of the bot and see if the answer of the user match the random number selected
-  let reply = bot.reply("local_user", "set " + num).then(function(reply) {
-    console.log(num);
-    // show the answer of the scenario in the reply html box
-    $('#output').html(reply);
-    responsiveVoice.speak(reply, 'UK English Female', {
-      pitch: 1
-    }, {
-      rate: 1
-    });
-  });
-
-}
+  }
+  function botReady(){
+   bot.sortReplies();
+   botReply(‘Hello’);
+  }
+  function botNotReady(err){
+   console.log(“An error has occurred.”, err);
+  }
