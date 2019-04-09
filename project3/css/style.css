@@ -1,5 +1,43 @@
 /*********************************************
 
-This is the style file for this project.
+Here is a description of any special CSS used.
+In this case it's just padding and margin to 0
+so the canvas is flush with the top left corner.
 
 **********************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.title {
+  font-size: 30px;
+  color: white;
+  font-family: 'Major Mono Display', monospace;
+  margin-left: auto;
+  margin-right: auto;
+  width:200px;
+  margin-top: 250px;
+  letter-spacing:15px;
+}
+
+.show {
+  font-size: 15px;
+  color: white;
+  font-family: 'Major Mono Display', monospace;
+  margin-left: auto;
+  margin-right: auto;
+  width:350px;
+  height: 20px;
+  margin-top: 30px;
+  letter-spacing:15px;
+}
+
+#second{
+ height: 100%;
+}
