@@ -21,6 +21,8 @@ function setup() {
   let user_input = select('#user_input');
   let output = select('#output');
 
+ button.mousePressed(chat);
+ 
   // anime the title with the library textilate
   textAnimation();
   setTimeout(begin,4000);
