@@ -23,7 +23,8 @@ function setup() {
 
  button.mousePressed(chat);
  $('#submit').on('click', function(){
-    clearSendTextbox();
+  clearSendTextbox();
+
  });
 
 
@@ -92,11 +93,17 @@ function chat() {
   $('.chatbox').show();
   // select in the box what the user wrote
   let input = $('#user_input').val();
+
+
+    if (input !== '') {
+    newMessage();
+    console.log('null');
+    }
   // path to the brain of the bot and see if the answer of the user match the scenario
   bot.reply("local_user", input).then(function(reply) {
     console.log(reply);
     // show the answer of the scenario in the reply html box
-    $('#output').html(reply);
+    $('#output').append('bot:' +reply +'<br>');
     responsiveVoice.speak(reply, 'UK English Female', {
       pitch: 1
     }, {
@@ -107,7 +114,7 @@ function chat() {
   let reply = bot.reply("local_user", "set " + num).then(function(reply) {
     console.log(num);
     // show the answer of the scenario in the reply html box
-    $('#output').html(reply);
+    $('#output').append(reply);
     responsiveVoice.speak(reply, 'UK English Female', {
       pitch: 1
     }, {
@@ -119,4 +126,9 @@ function chat() {
 
 function clearSendTextbox(){
 	$('#user_input').val('');
+}
+
+function newMessage() {
+let input = $('#user_input').val();
+$('#output').append('user:' + input + '<br>');
 }
