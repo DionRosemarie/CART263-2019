@@ -25,11 +25,13 @@ function setup() {
   textAnimation();
   setTimeout(begin,4000);
   $('#click-to-start').hide();
+  $('.text').hide();
+  $('.chatbox').hide();
 }
 
 function begin() {
   $('#click-to-start').show();
-  $('#click-to-start').unbind('click').click(chat);
+  $('#click-to-start').click(chat);
 
   $('#click-to-start').textillate({
      in : {
@@ -40,9 +42,15 @@ function begin() {
       },
       loop: false,
       minDisplayTime: 500,
-
   });
 }
+
+//function instruction() {
+//  $('.title').hide();
+//  $('#click-to-start').hide();
+//  $('.text').show();
+
+//}
 
 function textAnimation() {
    $('.title').textillate({
@@ -73,6 +81,9 @@ function brainError() {
 
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
+  $('.title').hide();
+  $('#click-to-start').hide();
+  $('.chatbox').show();
   // select in the box what the user wrote
   let input = $('#user_input').val();
   // path to the brain of the bot and see if the answer of the user match the scenario
