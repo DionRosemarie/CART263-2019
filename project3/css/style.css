@@ -62,12 +62,13 @@ height: 100vh;
   color: white;
   font-size: 20px;
   width: 400px;
-  height: 30px;
+  height: 29px;
   border-bottom-left-radius: 15px;
   border-color: white;
   background-color: black;
   padding-left: 10px;
   margin-top: 365px;
+  margin-left:
 }
 
 #submit {
@@ -87,21 +88,31 @@ height: 100vh;
 .bot {
   position: absolute;
   width : 500px;
+  max-height:355px;
   text-align: left;
   margin-left: 20px;
   font-size: 15px;
   color: white;
   font-family: 'Share Tech Mono', monospace;
   margin-top: 20px;
+  overflow-y: scroll;
+  padding-bottom: 20px;
 
+}
+
+#output {
+  max-height: 365px;
+  overflow-y: scroll;
 }
 
 .chatbox {
   background-color: black;
   width: 500px;
-  height: 400px;
+  height: 365px;
+  max-height: 365px;
   border: 1px solid white;
-  border-radius: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 80px;

@@ -103,7 +103,7 @@ function chat() {
   bot.reply("local_user", input).then(function(reply) {
     console.log(reply);
     // show the answer of the scenario in the reply html box
-    $('#output').append('bot:' +reply +'<br>');
+    $('#output').append('bot:' +reply +'<br><br>');
     responsiveVoice.speak(reply, 'UK English Female', {
       pitch: 1
     }, {
@@ -130,5 +130,5 @@ function clearSendTextbox(){
 
 function newMessage() {
 let input = $('#user_input').val();
-$('#output').append('user:' + input + '<br>');
+$('#output').append('user:' + input + '<br><br>');
 }
