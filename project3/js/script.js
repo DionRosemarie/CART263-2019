@@ -21,11 +21,27 @@ function setup() {
   let user_input = select('#user_input');
   let output = select('#output');
 
-  // if mouse is pressed, send the answer
-  button.mousePressed(chat);
   // anime the title with the library textilate
   textAnimation();
+  setTimeout(begin,4000);
+  $('#click-to-start').hide();
+}
 
+function begin() {
+  $('#click-to-start').show();
+  $('#click-to-start').unbind('click').click(chat);
+
+  $('#click-to-start').textillate({
+     in : {
+          effect:'fadeIn',
+      },
+      out: {
+          effect: 'fadeOut'
+      },
+      loop: false,
+      minDisplayTime: 500,
+
+  });
 }
 
 function textAnimation() {

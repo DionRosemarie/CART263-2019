@@ -6,7 +6,7 @@ so the canvas is flush with the top left corner.
 
 **********************************************/
 
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
 
 
 body {
@@ -20,8 +20,8 @@ height: 100vh;
   position: fixed;
   font-size: 60px;
   color: white;
-  font-family: 'Indie Flower', cursive;
-  margin-left: 220px;;
+  font-family: 'Share Tech Mono', monospace;
+  margin-left: 200px;
   margin-right: auto;
   width:800px;
   margin-top: 200px;
@@ -32,14 +32,27 @@ height: 100vh;
   position: fixed;
   font-size: 30px;
   color: white;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Share Tech Mono', monospace;
   margin-top: 280px;
   margin-left: 400px;
 }
 
+#click-to-start {
+  position: fixed;
+  width: 300px;
+  height: 50px;
+  color: white;
+  font-size: 2em;
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  margin-top: 350px;
+  margin-left: 450px;
+  margin-right: auto;
+}
+
 #user_input {
   position: fixed;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Share Tech Mono', monospace;
   color: white;
   font-size: 20px;
   width: 300px;
@@ -53,7 +66,7 @@ height: 100vh;
 
 #submit {
   position: fixed;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Share Tech Mono', monospace;
   color: white;
   font-size: 20px;
   border-color: black;
@@ -68,7 +81,7 @@ height: 100vh;
   text-align: center;
   font-size: 30px;
   color: white;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Share Tech Mono', monospace;
   margin-top: 340px;
   margin-left: 320px;
 }
