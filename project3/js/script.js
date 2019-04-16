@@ -21,57 +21,58 @@ function setup() {
   let user_input = select('#user_input');
   let output = select('#output');
 
- button.mousePressed(chat);
- $('#submit').on('click', function(){
-  clearSendTextbox();
+  button.mousePressed(chat);
+  $('#submit').on('click', function() {
+    clearSendTextbox();
 
- });
+  });
 
 
   // anime the title with the library textilate
   textAnimation();
-  setTimeout(begin,4000);
+  setTimeout(begin, 4000);
   $('#click-to-start').hide();
-  $('.text').hide();
+  $('#text').hide();
   $('.chatbox').hide();
+  $('#start').hide();
 }
 
 function begin() {
   $('#click-to-start').show();
-  $('#click-to-start').click(chat);
+  $('#click-to-start').click(instruction);
 
-  $('#click-to-start').textillate({
-     in : {
-          effect:'fadeIn',
-      },
-      out: {
-          effect: 'fadeOut'
-      },
-      loop: false,
-      minDisplayTime: 500,
+  $('#click-to-start').textillate({ in: {
+      effect: 'fadeIn',
+    },
+    out: {
+      effect: 'fadeOut'
+    },
+    loop: false,
+    minDisplayTime: 500,
   });
 }
 
-//function instruction() {
-//  $('.title').hide();
-//  $('#click-to-start').hide();
-//  $('.text').show();
+function instruction() {
+  $('.title').hide();
+  $('#click-to-start').hide();
+  $('#text').show();
+  $('#start').show();
 
-//}
+}
+
 
 function textAnimation() {
-   $('.title').textillate({
-      in : {
-           effect:'fadeIn',
-           delay: 200,
-       },
-       out: {
-           effect: 'rollOut'
-       },
-       loop: false,
-       minDisplayTime: 5000,
+  $('.title').textillate({ in: {
+      effect: 'fadeIn',
+      delay: 200,
+    },
+    out: {
+      effect: 'rollOut'
+    },
+    loop: false,
+    minDisplayTime: 5000,
 
-   });
+  });
 };
 
 // if everything runs normally, the brain si ready
@@ -95,15 +96,15 @@ function chat() {
   let input = $('#user_input').val();
 
 
-    if (input !== '') {
+  if (input !== '') {
     newMessage();
     console.log('null');
-    }
+  }
   // path to the brain of the bot and see if the answer of the user match the scenario
   bot.reply("local_user", input).then(function(reply) {
     console.log(reply);
     // show the answer of the scenario in the reply html box
-    $('#output').append('bot:' +reply +'<br><br>');
+    $('#output').append('bot:' + reply + '<br><br>');
     responsiveVoice.speak(reply, 'UK English Female', {
       pitch: 1
     }, {
@@ -124,11 +125,11 @@ function chat() {
 
 }
 
-function clearSendTextbox(){
-	$('#user_input').val('');
+function clearSendTextbox() {
+  $('#user_input').val('');
 }
 
 function newMessage() {
-let input = $('#user_input').val();
-$('#output').append('user:' + input + '<br><br>');
+  let input = $('#user_input').val();
+  $('#output').append('user:' + input + '<br><br>');
 }
