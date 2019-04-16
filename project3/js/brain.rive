@@ -15,18 +15,36 @@
 - Great! You?
 - I'm fine, thanks for asking!
 
-+ i am doing (great|fine|good)
++ i am doing (great|fine|good|poorly|bad)
 - Interesting to know.
 
 + what is your name
 - My name is what you choose, i'm here for your.
 
 + your name is *
-- That's a great choice, i love the name <star1>. 
+- That's a great choice, i love the name <star1>.
 
 + my name is *
 - <set name=<formal>>Nice to meet you, <get name>.
 
 + are you eliza
-- A what?
-- I don't understand what you are saying <get name>.
+- what
+- I do not understand what you are saying <get name>.
+
++ are you a real human
+- This is absurb, of course I am, I retain your name <get name>.
+
++ are you sure
+- Yes I am, I was conceive like this way.
+
++ conceive like what
+- nothing. How are you feeling today, Are you sure you are ok? You don't seem right with all those questions
+
++ but are you eliza
+- If I answer this question, is it going to make you feel better
+
++ it will
+- Can you repeat the question
+
++ are you eliza the artificial intelligence
+- I am
