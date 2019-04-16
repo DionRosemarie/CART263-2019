@@ -57,6 +57,7 @@ function instruction() {
   $('#click-to-start').hide();
   $('#text').show();
   $('#start').show();
+  $('#start').click(chat);
 
 }
 
@@ -89,8 +90,8 @@ function brainError() {
 
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
-  $('.title').hide();
-  $('#click-to-start').hide();
+  $('#text').hide();
+  $('#start').hide();
   $('.chatbox').show();
   // select in the box what the user wrote
   let input = $('#user_input').val();
@@ -105,17 +106,6 @@ function chat() {
     console.log(reply);
     // show the answer of the scenario in the reply html box
     $('#output').append('bot:' + reply + '<br><br>');
-    responsiveVoice.speak(reply, 'UK English Female', {
-      pitch: 1
-    }, {
-      rate: 1
-    });
-  });
-  // path to the brain of the bot and see if the answer of the user match the random number selected
-  let reply = bot.reply("local_user", "set " + num).then(function(reply) {
-    console.log(num);
-    // show the answer of the scenario in the reply html box
-    $('#output').append(reply);
     responsiveVoice.speak(reply, 'UK English Female', {
       pitch: 1
     }, {
