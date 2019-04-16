@@ -2,12 +2,28 @@
 ! version = 2.0
 
 
-+ what is my name
-- your name is <get name>, silly
++ *
+- Hello, human!
+
++ how are you
+- I'm great, how are you?
+- I'm good, you?
+- Good :) you?
+- Great! You?
+- I'm fine, thanks for asking!
+
++ i am doing (great|fine|good)
+- Interesting to know.
+
++ what is your name
+- My name is what you choose, i'm here for your.
+
++ your name is *
+- That's a great choice, i love the name <star1>. What is your name?
 
 + my name is *
 - <set name=<formal>>Nice to meet you, <get name>.
 
-// triggering the interaction at first with anything type in the box
-+ *
-- Hi, what is your name
++ are you eliza
+- A what?
+- I don't understand what you are saying <get name>.
