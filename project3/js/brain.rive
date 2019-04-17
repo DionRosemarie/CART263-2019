@@ -1,6 +1,6 @@
 // Chatbot brain
 ! version = 2.0
-
+! array colors = red blue green yellow
 
 + *
 - Hello, human!
@@ -48,3 +48,10 @@
 
 + are you eliza the artificial intelligence
 - I am
+
++ i bought a new *
+- Oh? What color is your new <star>?
+
++ (@colors)
+% oh what color is your new *
+- <star> is a pretty color for a <botstar>.
