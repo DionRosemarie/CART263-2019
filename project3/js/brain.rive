@@ -52,6 +52,6 @@
 + i bought a new *
 - Oh? What color is your new <star>?
 
-+ (@colors)
++ [*](@colors)[*]
 % oh what color is your new *
 - <star> is a pretty color for a <botstar>.
