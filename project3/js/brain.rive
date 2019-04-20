@@ -1,6 +1,7 @@
 // Chatbot brain
 ! version = 2.0
 
+// substitution
 ! sub i'm     = i am
 ! sub i'd     = i would
 ! sub i've    = i have
@@ -17,6 +18,22 @@
 ! sub what've = what have
 ! sub what'll = what will
 ! sub who's   = who is
+
+// Bot Variables
+! var age      = 10
+! var birthday = 1964
+! var sex      = i am who i am
+! var location = Concordia University
+! var city     = Montreal
+! var eyes     = green
+! var hair     = light brown
+! var hairlen  = long
+! var color    = blue
+! var band     = Nickelback
+! var book     = The Great Gatsby
+! var author   = F. Scott Fitzgerald
+! var job      = artificial intelligence
+! var realName = Eliza
 
 ! array colors = red blue green yellow
 ! array eliza = eliza artifical intelligence ai robot machine
@@ -41,16 +58,19 @@
 + what is your name
 - My name is what you choose, i'm here for your.
 
-+ your name is *
++ [*] your name is [*] *
 - <set botname=<formal>>That's a great choice, i love the name <get botname>.
 
 + are you real
+* <get botname> == undefined => That is a mean question to ask. Maybe ask my name first.
 - are you seing that I am not <get botname>? Are you saying that I am something else?
+- Yes I am real, I am <get botname>. I am talking to you right now, machine can't do that, maybe except the one from Joseph Weizenbaum.
 
 + my name is *
 - <set name=<formal>>Nice to meet you, <get name>.
 
 + are you a real human
+* <get name> == undefined => Maybe you are a machine too, you never told me your name
 - This is absurb, of course I am, I retain your name <get name>.
 
 + are you sure
@@ -59,15 +79,33 @@
 + conceive like what
 - nothing. How are you feeling today, Are you sure you are ok? You don't seem right with all those questions
 
-
 + but are you eliza
 - If I answer this question, is it going to make you feel better
 
 + it will
 - Can you repeat the question
 
++ how old are you
+- I am <bot age> years old
+
++ who is your creator
+- I am the child of a young mind, but I think I am related to someone else
+
++ [*] related [*]
+- I think I am related to Joseph Weizenbaum
+
 + who is *
-- Do you mean Joseph Weizenbaum? The creator of Eliza?
+- He is a scientist that created a machine that reproduce human conversation.
+
+
++ [*] machine [*]
+* <get botname> == undefined => Of course I am not real, you never gave me a name
+- You are silly <get name> {weight=10}
+- A what? {weight=20}
+
++ who are you
+* <get botname> == undefined => How can I be someone right now because you never gave me a name
+- I am <get botname>, don't you remember?
 
 + what is eliza
 - It is a informatique program that simulate an human conversation, juste like we are having

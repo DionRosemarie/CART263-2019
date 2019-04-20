@@ -15,6 +15,12 @@ margin: 0;
 padding: 0;
 }
 
+#timer {
+color: white;
+font-family: 'Share Tech Mono', monospace;
+font-size: 40px;
+}
+
 .title {
   font-size: 60px;
   color: white;

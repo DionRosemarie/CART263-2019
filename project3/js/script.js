@@ -9,8 +9,11 @@ let bot;
 // varibale for picking a random number
 let num;
 
+let counter = 0;
+
 // setup
 function setup() {
+
 
   // loading my bot
   bot = new RiveScript();
