@@ -1,6 +1,26 @@
 // Chatbot brain
 ! version = 2.0
+
+! sub i'm     = i am
+! sub i'd     = i would
+! sub i've    = i have
+! sub i'll    = i will
+! sub don't   = do not
+! sub isn't   = is not
+! sub you'd   = you would
+! sub you're  = you are
+! sub you've  = you have
+! sub you'll  = you will
+! sub what's  = what is
+! sub whats   = what is
+! sub what're = what are
+! sub what've = what have
+! sub what'll = what will
+! sub who's   = who is
+
 ! array colors = red blue green yellow
+! array eliza = eliza artifical intelligence ai robot machine
+! array names = Joseph Weizenbaum Weizenbaum Joseph the creator
 
 + *
 - Hello, human!
@@ -22,14 +42,13 @@
 - My name is what you choose, i'm here for your.
 
 + your name is *
-- That's a great choice, i love the name <star1>.
+- <set botname=<formal>>That's a great choice, i love the name <get botname>.
+
++ are you real
+- are you seing that I am not <get botname>? Are you saying that I am something else?
 
 + my name is *
 - <set name=<formal>>Nice to meet you, <get name>.
-
-+ are you eliza
-- what
-- I do not understand what you are saying <get name>.
 
 + are you a real human
 - This is absurb, of course I am, I retain your name <get name>.
@@ -40,18 +59,26 @@
 + conceive like what
 - nothing. How are you feeling today, Are you sure you are ok? You don't seem right with all those questions
 
+
 + but are you eliza
 - If I answer this question, is it going to make you feel better
 
 + it will
 - Can you repeat the question
 
-+ are you eliza the artificial intelligence
-- I am
++ who is *
+- Do you mean Joseph Weizenbaum? The creator of Eliza?
 
-+ i bought a new *
-- Oh? What color is your new <star>?
++ what is eliza
+- It is a informatique program that simulate an human conversation, juste like we are having
 
-+ [*](@colors)[*]
-% oh what color is your new *
-- <star> is a pretty color for a <botstar>.
++ are you sure
+- Yes I am, I am a computer. I am build to be always right
+
++ you are a computer
+- Yes I am, but that doesn't mean I am not real.
+
++ are you [*] (@eliza) [*]
+- I do not understand what you are saying.
+- You are silly
+- Stop it, I am getting upset

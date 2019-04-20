@@ -88,6 +88,16 @@ function brainError() {
   console.log('chatbot error');
 }
 
+
+function clearSendTextbox() {
+  $('#user_input').val('');
+}
+
+function newMessage() {
+  let input = $('#user_input').val();
+  $('#output').append('user:' + input + '<br><br>');
+}
+
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
   $('#text').hide();
@@ -113,13 +123,4 @@ function chat() {
     });
   });
 
-}
-
-function clearSendTextbox() {
-  $('#user_input').val('');
-}
-
-function newMessage() {
-  let input = $('#user_input').val();
-  $('#output').append('user:' + input + '<br><br>');
 }
