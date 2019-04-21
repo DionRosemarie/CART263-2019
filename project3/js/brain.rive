@@ -130,7 +130,7 @@ return new Promise(function(resolve) {
     // do something async
     setTimeout(function() {
     numClues++;
-    resolve(numClues);
+    resolve('');
     }, 1000);
 // reject("an error reply instead on error");
 });
