@@ -12,7 +12,7 @@ let numClues = 0;
 
 // variables for the timer
 let counter = 0;
-let timeLeft = 180;
+let timeLeft = 10;
 
 // setup
 function setup() {
@@ -60,7 +60,7 @@ function countdown() {
     if (counter == timeLeft) {
     clearInterval(interval);
     $('#timer').css( "color", "red" );
-    setTimeout(endGame, 2000);
+    setTimeout(endGame, 1000);
     }
 }
 }
@@ -147,13 +147,18 @@ function chat() {
     console.log(reply);
     console.log(numClues);
     // show the answer of the scenario in the reply html box
+
+    setTimeout(function() {
     $('#output').append('bot:' + reply + '<br><br>');
+    }, 1000);
+
     responsiveVoice.speak(reply, 'UK English Female', {
       pitch: 1
     }, {
       rate: 1
     });
   });
+
   if (numClues == 1) {
   setTimeout(breakEliza, 2000);
   }
@@ -197,4 +202,28 @@ function endGame() {
     $('#timer').hide();
     $('#text').show();
     $('#text').text("Your session is over, please comeback talk to me after my next patient");
+
+    let $button = $('<div class="newGame"></div>');
+    $button.text("start");
+    $button.button();
+
+    $button.css({
+    "font-family": 'Share Tech Mono',
+    display: 'block',
+    width: 100,
+    margin: 'auto',
+    color: 'white',
+    marginTop: 100,
+    backgroundColor: 'black',
+    borderRadius: 15,
+    borderStyle: 'solid',
+    borderColor: 'white',
+    borderWidth: 1
+  });
+
+    $button.on('click', function() {
+    location.reload(true);
+    });
+
+    $('body').append($button);
 }
