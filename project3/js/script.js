@@ -34,7 +34,6 @@ function setup() {
 
   // anime the title with the library textilate
   textAnimation();
-  countdown();
   setTimeout(begin, 4000);
   $('#click-to-start').hide();
   $('#text').hide();
@@ -93,7 +92,10 @@ function instruction() {
   $('#click-to-start').hide();
   $('#text').show();
   $('#start').show();
-  $('#start').click(chat);
+  $('#start').on("click", function(){
+  countdown();
+  chat();
+  });
 }
 
 function textAnimation() {
@@ -134,7 +136,6 @@ function newMessage() {
 
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
-
   $('#text').hide();
   $('#start').hide();
   $('.chatbox').show();
