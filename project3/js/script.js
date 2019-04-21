@@ -11,7 +11,7 @@ let num;
 
 // variables for the timer
 let counter = 0;
-let timeLeft = 5;
+let timeLeft = 10;
 
 // setup
 function setup() {
@@ -58,8 +58,9 @@ function countdown() {
     counter++;
     timer.html(convertSeconds(timeLeft - counter));
     if (counter == timeLeft) {
-      clearInterval(interval);
+    clearInterval(interval);
     $('#timer').css( "color", "red" );
+    setTimeout(endGame, 2000);
     }
 }
 }
@@ -154,4 +155,11 @@ function chat() {
     });
   });
 
+}
+
+function endGame() {
+    $('.chatbox').hide();
+    $('#timer').hide();
+    $('#text').show();
+    $('#text').text("Your session is over, please comeback talk to me after my next patient");
 }
