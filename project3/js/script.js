@@ -154,9 +154,41 @@ function chat() {
       rate: 1
     });
   });
-  if (numClues == 2) {
-  endGame();
+  if (numClues == 1) {
+  setTimeout(breakEliza, 2000);
   }
+}
+
+function breakEliza() {
+  let $button = $('<div class="newGame"></div>');
+  $button.text("start");
+  $button.button();
+  $button.css({
+  "font-family": 'Share Tech Mono',
+  display: 'block',
+  width: 100,
+  margin: 'auto',
+  color: 'white',
+  marginTop: 100,
+  backgroundColor: 'black',
+  borderRadius: 15,
+  borderStyle: 'solid',
+  borderColor: 'white',
+  borderWidth: 1
+});
+  $button.on('click', function() {
+  location.reload(true);
+  });
+  $('body').append($button);
+
+  $('.chatbox').toggle( "explode", {pieces: 50 }, 1500 );
+  $('#timer').toggle( "explode", {pieces: 50 }, 1500);
+  $('#text').show();
+  $('#text').text("I am Eliza You won");
+  $('#text').css({
+  "top": "500px",
+});
+
 }
 
 
