@@ -132,7 +132,6 @@ function newMessage() {
 
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
-
   countdown();
   $('#text').hide();
   $('#start').hide();
@@ -155,8 +154,11 @@ function chat() {
       rate: 1
     });
   });
-
+  if (numClues == 2) {
+  endGame();
+  }
 }
+
 
 function endGame() {
     $('.chatbox').hide();
