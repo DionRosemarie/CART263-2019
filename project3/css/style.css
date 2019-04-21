@@ -16,9 +16,26 @@ padding: 0;
 }
 
 #timer {
+text-align: center;
 color: white;
 font-family: 'Share Tech Mono', monospace;
 font-size: 40px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 50px;
+}
+
+.help {
+  background-color: black;
+  width: 200px;
+  height: 50px;
+  border: 1px solid white;
+  border-radius: 15px;
+  color: white;
+  font-size: 14px;
+  font-family: 'Share Tech Mono', monospace;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .title {
@@ -71,7 +88,7 @@ font-size: 40px;
 }
 
 #user_input {
-  position: fixed;
+  position: absolute;
   font-family: 'Share Tech Mono', monospace;
   color: white;
   font-size: 15px;
@@ -127,7 +144,7 @@ font-size: 40px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   margin : auto;
-  margin-top: 80px;
+  margin-top: 20px;
   overflow-x: hidden;
   overflow-y: scroll;
 }

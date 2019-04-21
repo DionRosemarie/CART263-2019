@@ -9,11 +9,12 @@ let bot;
 // varibale for picking a random number
 let num;
 
+// variables for the timer
 let counter = 0;
+let timeLeft = 5;
 
 // setup
 function setup() {
-
 
   // loading my bot
   bot = new RiveScript();
@@ -38,6 +39,35 @@ function setup() {
   $('#text').hide();
   $('.chatbox').hide();
   $('#start').hide();
+  $('.help').hide();
+}
+
+function countdown() {
+  var params = getURLParams();
+  if (params.minute) {
+  var min = params.minute;
+  timeLeft = min * 60;
+}
+
+  var timer = select('#timer');
+  timer.html(convertSeconds(timeLeft - counter));
+
+  var interval = setInterval(timeIt, 1000);
+
+  function timeIt() {
+    counter++;
+    timer.html(convertSeconds(timeLeft - counter));
+    if (counter == timeLeft) {
+      clearInterval(interval);
+    $('#timer').css( "color", "red" );
+    }
+}
+}
+
+function convertSeconds(s) {
+  var min = floor(s/60);
+  var sec = s % 60;
+  return nf(min,2) + ':' + nf(sec,2);
 }
 
 function begin() {
@@ -64,7 +94,6 @@ function instruction() {
 
 }
 
-
 function textAnimation() {
   $('.title').textillate({ in: {
       effect: 'fadeIn',
@@ -83,14 +112,13 @@ function textAnimation() {
 function brainReady() {
   console.log('chatbot ready');
   bot.sortReplies();
-  num = floor(random(100) + 1);
+//  num = floor(random(100) + 1);
 }
 
 // if something goes wrong, the brain is not ready
 function brainError() {
   console.log('chatbot error');
 }
-
 
 function clearSendTextbox() {
   $('#user_input').val('');
@@ -103,12 +131,12 @@ function newMessage() {
 
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
+  countdown();
   $('#text').hide();
   $('#start').hide();
   $('.chatbox').show();
   // select in the box what the user wrote
   let input = $('#user_input').val();
-
 
   if (input !== '') {
     newMessage();
