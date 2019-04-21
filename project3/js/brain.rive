@@ -77,13 +77,13 @@
 - This is absurb, of course I am, I retain your name <get name>.
 
 + are you sure
-- Yes I am, I was conceive like this way.
+- <call>clue</call> Yes I am, I was conceive like this way.
 
 + conceive like what
 - nothing. How are you feeling today, Are you sure you are ok? You don't seem right with all those questions
 
 + but are you eliza
-- If I answer this question, is it going to make you feel better
+- <call>clue</call> If I answer this question, is it going to make you feel better
 
 + it will
 - Can you repeat the question
@@ -95,7 +95,7 @@
 - I am the child of a young mind, but I think I am related to someone else
 
 + [*] related [*]
-- I think I am related to Joseph Weizenbaum
+- <call>clue</call> I think I am related to Joseph Weizenbaum
 
 + who is *
 - He is a scientist that created a machine that reproduce human conversation.

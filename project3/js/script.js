@@ -12,7 +12,7 @@ let numClues = 0;
 
 // variables for the timer
 let counter = 0;
-let timeLeft = 10;
+let timeLeft = 180;
 
 // setup
 function setup() {
@@ -34,12 +34,13 @@ function setup() {
 
   // anime the title with the library textilate
   textAnimation();
+  countdown();
   setTimeout(begin, 4000);
   $('#click-to-start').hide();
   $('#text').hide();
   $('.chatbox').hide();
   $('#start').hide();
-  $('.help').hide();
+  $('#timer').hide();
 }
 
 function countdown() {
@@ -57,6 +58,7 @@ function countdown() {
   function timeIt() {
     counter++;
     timer.html(convertSeconds(timeLeft - counter));
+
     if (counter == timeLeft) {
     clearInterval(interval);
     $('#timer').css( "color", "red" );
@@ -92,7 +94,6 @@ function instruction() {
   $('#text').show();
   $('#start').show();
   $('#start').click(chat);
-
 }
 
 function textAnimation() {
@@ -107,6 +108,7 @@ function textAnimation() {
     minDisplayTime: 5000,
 
   });
+
 };
 
 // if everything runs normally, the brain si ready
@@ -132,10 +134,11 @@ function newMessage() {
 
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
-  countdown();
+
   $('#text').hide();
   $('#start').hide();
   $('.chatbox').show();
+  $('#timer').show();
   // select in the box what the user wrote
   let input = $('#user_input').val();
 
@@ -144,13 +147,10 @@ function chat() {
   }
   // path to the brain of the bot and see if the answer of the user match the scenario
   bot.reply("local_user", input).then(function(reply) {
-    console.log(reply);
-    console.log(numClues);
-    // show the answer of the scenario in the reply html box
-
     setTimeout(function() {
-    $('#output').append('bot:' + reply + '<br><br>');
-    }, 1000);
+     $('#output').append('bot:' + reply + '<br><br>');
+   }, 1000);
+    // show the answer of the scenario in the reply html box
 
     responsiveVoice.speak(reply, 'UK English Female', {
       pitch: 1
@@ -162,6 +162,7 @@ function chat() {
   if (numClues == 1) {
   setTimeout(breakEliza, 2000);
   }
+
 }
 
 function breakEliza() {
