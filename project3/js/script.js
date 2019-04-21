@@ -7,15 +7,15 @@ For project 3, i'm going to do a game that make reference to the AI Eliza made b
 // variable for the answer giving by the computer
 let bot;
 // varibale for picking a random number
-let num;
+let clues;
+let numClues = 0;
 
 // variables for the timer
 let counter = 0;
-let timeLeft = 10;
+let timeLeft = 180;
 
 // setup
 function setup() {
-
   // loading my bot
   bot = new RiveScript();
   bot.loadFile("js/brain.rive").then(brainReady).catch(brainError);
@@ -132,6 +132,7 @@ function newMessage() {
 
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
+
   countdown();
   $('#text').hide();
   $('#start').hide();
@@ -141,11 +142,11 @@ function chat() {
 
   if (input !== '') {
     newMessage();
-    console.log('null');
   }
   // path to the brain of the bot and see if the answer of the user match the scenario
   bot.reply("local_user", input).then(function(reply) {
     console.log(reply);
+    console.log(numClues);
     // show the answer of the scenario in the reply html box
     $('#output').append('bot:' + reply + '<br><br>');
     responsiveVoice.speak(reply, 'UK English Female', {

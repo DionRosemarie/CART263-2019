@@ -35,9 +35,12 @@
 ! var job      = artificial intelligence
 ! var realName = Eliza
 
+// all the arrays of answers
 ! array colors = red blue green yellow
 ! array eliza = eliza artifical intelligence ai robot machine
 ! array names = Joseph Weizenbaum Weizenbaum Joseph the creator
+
+
 
 + *
 - Hello, human!
@@ -114,9 +117,21 @@
 - Yes I am, I am a computer. I am build to be always right
 
 + you are a computer
-- Yes I am, but that doesn't mean I am not real.
+- <get botname> == undefined => Ask my name before assuming things about me.
+- Yes I am, but that doesn't mean I am not real, after all, my name is <ge botname>
 
 + are you [*] (@eliza) [*]
-- I do not understand what you are saying.
-- You are silly
-- Stop it, I am getting upset
+-  <call>clue</call> I do not understand what you are saying.
+-  <call>clue</call> You are silly
+-  <call>clue</call> Stop it, I am getting upset
+
+> object clue javascript
+return new Promise(function(resolve) {
+    // do something async
+    setTimeout(function() {
+    numClues++;
+    resolve(numClues);
+    }, 1000);
+// reject("an error reply instead on error");
+});
+< object
