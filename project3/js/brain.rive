@@ -40,6 +40,7 @@
 ! array eliza = eliza artifical intelligence ai robot machine
 ! array names = Joseph Weizenbaum Weizenbaum Joseph the creator
 ! array greetings = hi hello sup hi there
+! array feelings = great fine good poorly bad ok well
 
 // scenario for the game
 
@@ -61,7 +62,7 @@
 - Great! You?
 - I'm fine, thanks for asking!
 
-+ i am doing (great|fine|good|poorly|bad)
++ [*] (@feelings) [*]
 - Interesting to know.
 
 + what is your name

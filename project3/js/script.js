@@ -168,10 +168,11 @@ function chat() {
   });
 
   if (numClues == 5) {
-    setTimeout(breakEliza, 2000);
+  setTimeout(breakEliza, 5000);
   }
 
 }
+
 function glitchSound() {
   var whiteNoise = new Pizzicato.Sound(function(e) {
   var output = e.outputBuffer.getChannelData(0);
@@ -179,7 +180,11 @@ function glitchSound() {
   output[i] = Math.random();
   });
   if (numClues++) {
-    whiteNoise.play();
+  whiteNoise.play();
+  whiteNoise.attack = 1;
+  setTimeout(function () {
+  whiteNoise.stop();
+  }, 500);
   }
 
 }
@@ -218,7 +223,10 @@ function breakEliza() {
   $('#text').css({
     "top": "500px",
   });
-
+  numClues=0;
+  $('#helpOne').hide();
+  $('#helpTwo').hide();
+  $('#helpThree').hide();
 }
 
 function helpMessage() {
@@ -257,6 +265,8 @@ function endGame() {
   $('#timer').hide();
   $('#text').show();
   $('#text').text("Your session is over, please comeback talk to me after my next patient");
+
+  numClues=0;
 
   let $button = $('<div class="newGame"></div>');
   $button.text("start");
