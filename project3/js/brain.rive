@@ -33,7 +33,7 @@
 ! var book     = The Great Gatsby
 ! var author   = F. Scott Fitzgerald
 ! var job      = artificial intelligence
-! var realName = Eliza
+
 
 // all the arrays of answers
 ! array colors = red blue green yellow
@@ -46,7 +46,10 @@
 // triggering the discussion
 + *
 * <get botname> == undefined => Hello, human!
-- Mmmmm, I am not sure to understand what you are saying <get name>
+- Mmmmm, I am not sure to understand what you are saying <get name> {weight=10}
+- What are you saying <get name> ? {weight=10}
+- What? {weight=20}
+- I am confuse, I don't understand {weight=25}
 
 + [*] (@greetings) [*]
 - What is your name?
@@ -66,6 +69,32 @@
 
 + [*] your name is [*] *
 - <set botname=<formal>>That's a great choice, i love the name <get botname>.
+
++ [*] your job [*]
+- <call>clue</call> I am an <bot job>
+
++ [*] for living [*]
+- <call>clue</call> I am an <bot job>
+
++ [*] hobby [*]
+- I like to read. My favorite book is <bot book>
+
++ [*] favorite [*]
+- I don't have a preference, in general.
+
++ [*] music [*]
+- I am impartial. But you should listen my favorite band <bot band>
+
++ [*] joke [*]
+- I have invented a new word : plagiarism!
+- I dreamed I was forced to eat a giant marshmallow. When I woke up, my pillow was gone.
+- I hate Russian dolls...so full of themselves.
+- Why is 6 afraid of 7? Because 7 is a registered 6 offender.
+- How do you keep an idiot in suspense?
+- What do you call a magic dog? A labracadabrador.
+
++ [*] funny [*]
+- Thank you
 
 + are you real
 // if the name of the player is not define, we are going to make him go back to the first question to go throught the scenario
