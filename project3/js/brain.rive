@@ -39,13 +39,16 @@
 ! array colors = red blue green yellow
 ! array eliza = eliza artifical intelligence ai robot machine
 ! array names = Joseph Weizenbaum Weizenbaum Joseph the creator
+! array greetings = hi hello sup hi there
 
+// scenario for the game
 
-
+// triggering the discussion
 + *
-- Hello, human!
+* <get botname> == undefined => Hello, human!
+- Mmmmm, I am not sure to understand what you are saying <get name>
 
-+ hi
++ [*] (@greetings) [*]
 - What is your name?
 
 + how are you
@@ -59,12 +62,13 @@
 - Interesting to know.
 
 + what is your name
-- My name is what you choose, i'm here for your.
+- My name is what you choose, i'm here for you.
 
 + [*] your name is [*] *
 - <set botname=<formal>>That's a great choice, i love the name <get botname>.
 
 + are you real
+// if the name of the player is not define, we are going to make him go back to the first question to go throught the scenario
 * <get botname> == undefined => That is a mean question to ask. Maybe ask my name first.
 - are you seing that I am not <get botname>? Are you saying that I am something else?
 - Yes I am real, I am <get botname>. I am talking to you right now, machine can't do that, maybe except the one from Joseph Weizenbaum.
@@ -77,29 +81,36 @@
 - This is absurb, of course I am, I retain your name <get name>.
 
 + are you sure
+// if the person ask this question, he is getting closer to break eliza
 - <call>clue</call> Yes I am, I was conceive like this way.
 
 + conceive like what
-- nothing. How are you feeling today, Are you sure you are ok? You don't seem right with all those questions
+* <get botname> == undefined => I don't know, I am confuse, give me a indentity, give me a name
+- nothing. I am <get botname>. I am not Eliza or a Machine
 
 + but are you eliza
+// if the person ask this question, he is getting closer to break eliza
 - <call>clue</call> If I answer this question, is it going to make you feel better
 
-+ it will
++ [*] it will [*]
 - Can you repeat the question
 
 + how old are you
 - I am <bot age> years old
 
-+ who is your creator
++ [*] creator [*]
 - I am the child of a young mind, but I think I am related to someone else
 
 + [*] related [*]
+// if the person ask this question, he is getting closer to break eliza
 - <call>clue</call> I think I am related to Joseph Weizenbaum
 
 + who is *
 - He is a scientist that created a machine that reproduce human conversation.
 
++ [*] master [*]
+* <get botname> == undefined => You can be my master if you want. What is your name?
+- <get name> is my master. You are my master.
 
 + [*] machine [*]
 * <get botname> == undefined => Of course I am not real, you never gave me a name
@@ -117,13 +128,17 @@
 - Yes I am, I am a computer. I am build to be always right
 
 + you are a computer
-- <get botname> == undefined => Ask my name before assuming things about me.
+* <get botname> == undefined => Ask my name before assuming things about me.
 - Yes I am, but that doesn't mean I am not real, after all, my name is <ge botname>
 
 + are you [*] (@eliza) [*]
--  <call>clue</call> I do not understand what you are saying.
--  <call>clue</call> You are silly
--  <call>clue</call> Stop it, I am getting upset
+* <get botname> == undefined => Maybe if you would ask my name you will no i am not her.
+// if the person ask this question, he is getting closer to break eliza
+* <input1> == <input2> =>  <call>clue</call> If you repeat yourself again I'll stop talking.
+// if the person ask this question, he is getting closer to break eliza
+- <call>clue</call> Please stop it, it is getting really annoying.
+// if the person ask this question, he is getting closer to break eliza
+- <call>clue</call> Stop asking me that question. I am <get botname>! I AM <get botname>!!
 
 > object clue javascript
 return new Promise(function(resolve) {

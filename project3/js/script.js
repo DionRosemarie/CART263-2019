@@ -165,7 +165,7 @@ function chat() {
 
   });
 
-  if (numClues == 1) {
+  if (numClues == 5) {
     setTimeout(breakEliza, 2000);
   }
 
