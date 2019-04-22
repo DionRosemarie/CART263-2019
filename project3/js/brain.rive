@@ -62,6 +62,7 @@
 - Great! You?
 - I'm fine, thanks for asking!
 
+// if the array is called in any type of sentence
 + [*] (@feelings) [*]
 - Interesting to know.
 
@@ -69,23 +70,30 @@
 - My name is what you choose, i'm here for you.
 
 + [*] your name is [*] *
+// chosing a name for the robot and keep it as a variable
 - <set botname=<formal>>That's a great choice, i love the name <get botname>.
 
+// small talk with the bot
 + [*] job [*]
 - <call>clue</call> I am an <bot job>
 
+// small talk with the bot
 + [*] for living [*]
 - <call>clue</call> I am an <bot job>
 
+// small talk with the bot
 + [*] hobby [*]
 - I like to read. My favorite book is <bot book>
 
+// small talk with the bot
 + [*] favorite [*]
 - I don't have a preference, in general.
 
+// small talk with the bot
 + [*] music [*]
 - I am impartial. But you should listen my favorite band <bot band>
 
+// small talk with the bot
 + [*] joke [*]
 - I have invented a new word : plagiarism!
 - I dreamed I was forced to eat a giant marshmallow. When I woke up, my pillow was gone.
@@ -104,9 +112,11 @@
 - Yes I am real, I am <get botname>. I am talking to you right now, machine can't do that, maybe except the one from Joseph Weizenbaum.
 
 + my name is *
+// setting a variable for the name of the player and keep it
 - <set name=<formal>>Nice to meet you, <get name>.
 
 + are you a real human
+// if the name at first was not mentionned, then it goes back to the top of the scenario
 * <get name> == undefined => Maybe you are a machine too, you never told me your name
 - This is absurb, of course I am, I retain your name <get name>.
 
@@ -168,8 +178,9 @@
 // if the person ask this question, he is getting closer to break eliza
 - <call>clue</call> Please stop it, it is getting really annoying.  {weight=25}
 // if the person ask this question, he is getting closer to break eliza
-- <call>clue</call> Stop asking me that question. I am <get botname>! I AM <get botname>!! {weight=10}
+- <call>clue</call> Stop asking me this question. I am <get botname>! I AM <get botname>!! {weight=10}
 
+// javascript function into the brain
 > object clue javascript
 return new Promise(function(resolve) {
 
