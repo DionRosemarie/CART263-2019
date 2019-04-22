@@ -1,9 +1,5 @@
 "use strict";
 
-/***********************************************
-For project 3, i'm going to do a game that make reference to the AI Eliza made by Joseph Weizenbeaum in 1964. The main goal of the game is going to try to crack the AI. It is going to try to change the subject, go around the subject, just like Eliza, but the user will need to stay focus and continue to ask question that is goig to break the AI. I decided to use RiveScript because it give me a lot of posibility in the scenario. This prototype is a really small example of what RiveScript can do. I had difficulty trying to understand how it works but with this, I covered the principal. I'm going to had further in animation with the AI once the scenario is all done like adding music or images to distract the user of his goal.
-***********************************************/
-
 // variable for the answer giving by the computer
 let bot;
 // varibale for picking a random number
@@ -25,16 +21,24 @@ function setup() {
   let user_input = select('#user_input');
   let output = select('#output');
 
+  // when the player click send, the message is going into the chatbox
   button.mousePressed(chat);
   $('#submit').on('click', function() {
     clearSendTextbox();
 
   });
+// anime the title with the library textilate
+  $('.title').textillate({ in: {
+      effect: 'fadeIn',
+      delay: 200,
+    },
+    loop: false,
+    minDisplayTime: 5000,
 
+  });
 
-  // anime the title with the library textilate
-  textAnimation();
   setTimeout(begin, 4000);
+  // hide all the divs in the index.html
   $('#click-to-start').hide();
   $('#text').hide();
   $('.chatbox').hide();
@@ -45,6 +49,7 @@ function setup() {
   $('#helpThree').hide();
 }
 
+// function to have a countdown on the top of the game
 function countdown() {
   var params = getURLParams();
   if (params.minute) {
@@ -52,15 +57,17 @@ function countdown() {
     timeLeft = min * 60;
   }
 
+
   var timer = select('#timer');
   timer.html(convertSeconds(timeLeft - counter));
 
   var interval = setInterval(timeIt, 1000);
-
+// function to make the countdown goes down and not up
   function timeIt() {
     counter++;
     timer.html(convertSeconds(timeLeft - counter));
 
+// if the countdown is over, the game is over
     if (counter == timeLeft) {
       clearInterval(interval);
       $('#timer').css("color", "red");
@@ -69,32 +76,34 @@ function countdown() {
   }
 }
 
+// conver the second into other numbers
 function convertSeconds(s) {
   var min = floor(s / 60);
   var sec = s % 60;
   return nf(min, 2) + ':' + nf(sec, 2);
 }
 
+// starting the game
 function begin() {
   $('#click-to-start').show();
   $('#click-to-start').click(instruction);
 
+// animate the button
   $('#click-to-start').textillate({ in: {
       effect: 'fadeIn',
-    },
-    out: {
-      effect: 'fadeOut'
     },
     loop: false,
     minDisplayTime: 500,
   });
 }
 
+// displaying the instructions
 function instruction() {
   $('.title').hide();
   $('#click-to-start').hide();
   $('#text').show();
   $('#start').show();
+// if the function are called here, there is no loop in the sound on setTimeout
   $('#start').on("click", function() {
     countdown();
     chat();
@@ -102,21 +111,6 @@ function instruction() {
     setTimeout(helpMessage,5000);
   });
 }
-
-function textAnimation() {
-  $('.title').textillate({ in: {
-      effect: 'fadeIn',
-      delay: 200,
-    },
-    out: {
-      effect: 'rollOut'
-    },
-    loop: false,
-    minDisplayTime: 5000,
-
-  });
-
-};
 
 // if everything runs normally, the brain si ready
 function brainReady() {
@@ -129,11 +123,11 @@ function brainReady() {
 function brainError() {
   console.log('chatbot error');
 }
-
+// when the message is send, clear the message area
 function clearSendTextbox() {
   $('#user_input').val('');
 }
-
+// keep track of all the old messages
 function newMessage() {
   let input = $('#user_input').val();
   $('#output').append('user:' + input + '<br><br>');
@@ -149,6 +143,7 @@ function chat() {
   // select in the box what the user wrote
   let input = $('#user_input').val();
 
+// keep track of all the old messages
   if (input !== '') {
     newMessage();
   }
@@ -157,7 +152,7 @@ function chat() {
     setTimeout(function() {
       $('#output').append('bot:' + reply + '<br><br>');
       // show the answer of the scenario in the reply html box
-
+      // let the bot talk to you
       let voice = responsiveVoice.speak(reply, 'UK English Female', {
         pitch: 1
       }, {
@@ -166,19 +161,21 @@ function chat() {
     }, 1000);
 
   });
-
+// if the player has ask the right question, then display the end game
   if (numClues == 5) {
   setTimeout(breakEliza, 5000);
   }
 
 }
 
+// function to add an indication that the player is near a clue
 function glitchSound() {
   var whiteNoise = new Pizzicato.Sound(function(e) {
   var output = e.outputBuffer.getChannelData(0);
   for (var i = 0; i < e.outputBuffer.length; i++)
   output[i] = Math.random();
   });
+// the sound is only going to play when the right answer is called
   if (numClues++) {
   whiteNoise.play();
   whiteNoise.attack = 1;
@@ -189,7 +186,7 @@ function glitchSound() {
 
 }
 
-
+// if the player won
 function breakEliza() {
   let $button = $('<div class="newGame"></div>');
   $button.text("start");
@@ -211,7 +208,7 @@ function breakEliza() {
     location.reload(true);
   });
   $('body').append($button);
-
+// effect of breaking eliza
   $('.chatbox').toggle("explode", {
     pieces: 50
   }, 1500);
@@ -223,12 +220,14 @@ function breakEliza() {
   $('#text').css({
     "top": "500px",
   });
+// setting back the num of clues found to 0
   numClues=0;
   $('#helpOne').hide();
   $('#helpTwo').hide();
   $('#helpThree').hide();
 }
 
+// this helps to player to keep track of the scenario
 function helpMessage() {
   $('#helpOne').show();
   $('#helpOne').click(function () {
@@ -256,7 +255,7 @@ function helpMessage() {
 
 }
 
-
+// if the countdown went to 0 and the player did not get all the clues
 function endGame() {
   $('#helpOne').hide();
   $('#helpTwo').hide();
@@ -266,8 +265,9 @@ function endGame() {
   $('#text').show();
   $('#text').text("Your session is over, please comeback talk to me after my next patient");
 
+// setting back all the clues found to 0
   numClues=0;
-
+// displaying if the button to go back
   let $button = $('<div class="newGame"></div>');
   $button.text("start");
   $button.button();
