@@ -40,14 +40,17 @@ function setup() {
   $('.chatbox').hide();
   $('#start').hide();
   $('#timer').hide();
+  $('#helpOne').hide();
+  $('#helpTwo').hide();
+  $('#helpThree').hide();
 }
 
 function countdown() {
   var params = getURLParams();
   if (params.minute) {
-  var min = params.minute;
-  timeLeft = min * 60;
-}
+    var min = params.minute;
+    timeLeft = min * 60;
+  }
 
   var timer = select('#timer');
   timer.html(convertSeconds(timeLeft - counter));
@@ -59,17 +62,17 @@ function countdown() {
     timer.html(convertSeconds(timeLeft - counter));
 
     if (counter == timeLeft) {
-    clearInterval(interval);
-    $('#timer').css( "color", "red" );
-    setTimeout(endGame, 1000);
+      clearInterval(interval);
+      $('#timer').css("color", "red");
+      setTimeout(endGame, 1000);
     }
-}
+  }
 }
 
 function convertSeconds(s) {
-  var min = floor(s/60);
+  var min = floor(s / 60);
   var sec = s % 60;
-  return nf(min,2) + ':' + nf(sec,2);
+  return nf(min, 2) + ':' + nf(sec, 2);
 }
 
 function begin() {
@@ -92,9 +95,10 @@ function instruction() {
   $('#click-to-start').hide();
   $('#text').show();
   $('#start').show();
-  $('#start').on("click", function(){
-  countdown();
-  chat();
+  $('#start').on("click", function() {
+    countdown();
+    chat();
+    setTimeout(helpMessage,5000);
   });
 }
 
@@ -117,7 +121,7 @@ function textAnimation() {
 function brainReady() {
   console.log('chatbot ready');
   bot.sortReplies();
-//  num = floor(random(100) + 1);
+  //  num = floor(random(100) + 1);
 }
 
 // if something goes wrong, the brain is not ready
@@ -149,19 +153,20 @@ function chat() {
   // path to the brain of the bot and see if the answer of the user match the scenario
   bot.reply("local_user", input).then(function(reply) {
     setTimeout(function() {
-     $('#output').append('bot:' + reply + '<br><br>');
-   }, 1000);
-    // show the answer of the scenario in the reply html box
+      $('#output').append('bot:' + reply + '<br><br>');
+      // show the answer of the scenario in the reply html box
 
-    responsiveVoice.speak(reply, 'UK English Female', {
-      pitch: 1
-    }, {
-      rate: 1
-    });
+      responsiveVoice.speak(reply, 'UK English Female', {
+        pitch: 1
+      }, {
+        rate: 1
+      });
+    }, 1000);
+
   });
 
   if (numClues == 1) {
-  setTimeout(breakEliza, 2000);
+    setTimeout(breakEliza, 2000);
   }
 
 }
@@ -171,45 +176,76 @@ function breakEliza() {
   $button.text("start");
   $button.button();
   $button.css({
-  "font-family": 'Share Tech Mono',
-  display: 'block',
-  width: 100,
-  margin: 'auto',
-  color: 'white',
-  marginTop: 100,
-  backgroundColor: 'black',
-  borderRadius: 15,
-  borderStyle: 'solid',
-  borderColor: 'white',
-  borderWidth: 1
-});
+    "font-family": 'Share Tech Mono',
+    display: 'block',
+    width: 100,
+    margin: 'auto',
+    color: 'white',
+    marginTop: 100,
+    backgroundColor: 'black',
+    borderRadius: 15,
+    borderStyle: 'solid',
+    borderColor: 'white',
+    borderWidth: 1
+  });
   $button.on('click', function() {
-  location.reload(true);
+    location.reload(true);
   });
   $('body').append($button);
 
-  $('.chatbox').toggle( "explode", {pieces: 50 }, 1500 );
-  $('#timer').toggle( "explode", {pieces: 50 }, 1500);
+  $('.chatbox').toggle("explode", {
+    pieces: 50
+  }, 1500);
+  $('#timer').toggle("explode", {
+    pieces: 50
+  }, 1500);
   $('#text').show();
   $('#text').text("I am Eliza You won");
   $('#text').css({
-  "top": "500px",
-});
+    "top": "500px",
+  });
+
+}
+
+function helpMessage() {
+  $('#helpOne').show();
+  $('#helpOne').click(function () {
+  alert("Talk to her, ask her name, how she is");
+  $('#helpOne').remove();
+  setTimeout(clueTwo,5000);
+  });
+
+  function clueTwo() {
+  $('#helpTwo').show();
+  $('#helpTwo').click(function () {
+  alert("Maybe ask her if she is real");
+  $('#helpTwo').remove();
+  setTimeout(clueThree,5000);
+  });
+  }
+
+  function clueThree() {
+  $('#helpThree').show();
+  $('#helpThree').click(function () {
+  alert("Be persistent, ask over and over");
+  $('#helpThree').remove();
+  });
+  }
 
 }
 
 
 function endGame() {
-    $('.chatbox').hide();
-    $('#timer').hide();
-    $('#text').show();
-    $('#text').text("Your session is over, please comeback talk to me after my next patient");
+  $('.chatbox').hide();
+  $('#timer').hide();
+  $('#text').show();
+  $('#text').text("Your session is over, please comeback talk to me after my next patient");
 
-    let $button = $('<div class="newGame"></div>');
-    $button.text("start");
-    $button.button();
+  let $button = $('<div class="newGame"></div>');
+  $button.text("start");
+  $button.button();
 
-    $button.css({
+  $button.css({
     "font-family": 'Share Tech Mono',
     display: 'block',
     width: 100,
@@ -223,9 +259,9 @@ function endGame() {
     borderWidth: 1
   });
 
-    $button.on('click', function() {
+  $button.on('click', function() {
     location.reload(true);
-    });
+  });
 
-    $('body').append($button);
+  $('body').append($button);
 }

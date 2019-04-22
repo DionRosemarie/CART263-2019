@@ -19,11 +19,60 @@ padding: 0;
 text-align: center;
 color: white;
 font-family: 'Share Tech Mono', monospace;
-font-size: 40px;
+font-size: 30px;
 margin-left: auto;
 margin-right: auto;
-margin-top: 50px;
+margin-top: 30px;
 }
+
+#helpOne{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 20px;
+  background-color: black;
+  width: 100px;
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-align: center;
+  padding-top: 8px;
+  margin-top: 50px;
+}
+
+#helpTwo{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 20px;
+  background-color: black;
+  width: 100px;
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-align: center;
+  padding-top: 8px;
+  margin-top: 50px;
+}
+
+#helpThree{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 20px;
+  background-color: black;
+  width: 100px;
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-align: center;
+  padding-top: 8px;
+  margin-top: 50px;
+}
+
 
 .score {
   margin-left: auto;
