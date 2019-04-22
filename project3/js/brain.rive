@@ -70,7 +70,7 @@
 + [*] your name is [*] *
 - <set botname=<formal>>That's a great choice, i love the name <get botname>.
 
-+ [*] your job [*]
++ [*] job [*]
 - <call>clue</call> I am an <bot job>
 
 + [*] for living [*]
@@ -163,17 +163,18 @@
 + are you [*] (@eliza) [*]
 * <get botname> == undefined => Maybe if you would ask my name you will no i am not her.
 // if the person ask this question, he is getting closer to break eliza
-* <input1> == <input2> =>  <call>clue</call> If you repeat yourself again I'll stop talking.
+* <input1> == <input2> =>  <call>clue</call> If you repeat yourself again I'll stop talking.{weight=25}
 // if the person ask this question, he is getting closer to break eliza
-- <call>clue</call> Please stop it, it is getting really annoying.
+- <call>clue</call> Please stop it, it is getting really annoying.  {weight=25}
 // if the person ask this question, he is getting closer to break eliza
-- <call>clue</call> Stop asking me that question. I am <get botname>! I AM <get botname>!!
+- <call>clue</call> Stop asking me that question. I am <get botname>! I AM <get botname>!! {weight=10}
 
 > object clue javascript
 return new Promise(function(resolve) {
 
     setTimeout(function() {
     numClues++;
+    glitchSound();
     resolve('');
     }, 1000);
 

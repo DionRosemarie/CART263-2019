@@ -98,6 +98,7 @@ function instruction() {
   $('#start').on("click", function() {
     countdown();
     chat();
+    glitchSound();
     setTimeout(helpMessage,5000);
   });
 }
@@ -140,6 +141,7 @@ function newMessage() {
 
 // once the mouse is pressed, the game starts and the interaction betwen the user and bots goes on
 function chat() {
+  console.log(numClues);
   $('#text').hide();
   $('#start').hide();
   $('.chatbox').show();
@@ -151,12 +153,12 @@ function chat() {
     newMessage();
   }
   // path to the brain of the bot and see if the answer of the user match the scenario
-  bot.reply("local_user", input).then(function(reply) {
+    bot.reply("local_user", input).then(function(reply) {
     setTimeout(function() {
       $('#output').append('bot:' + reply + '<br><br>');
       // show the answer of the scenario in the reply html box
 
-      responsiveVoice.speak(reply, 'UK English Female', {
+      let voice = responsiveVoice.speak(reply, 'UK English Female', {
         pitch: 1
       }, {
         rate: 1
@@ -170,6 +172,18 @@ function chat() {
   }
 
 }
+function glitchSound() {
+  var whiteNoise = new Pizzicato.Sound(function(e) {
+  var output = e.outputBuffer.getChannelData(0);
+  for (var i = 0; i < e.outputBuffer.length; i++)
+  output[i] = Math.random();
+  });
+  if (numClues++) {
+    whiteNoise.play();
+  }
+
+}
+
 
 function breakEliza() {
   let $button = $('<div class="newGame"></div>');
@@ -236,6 +250,9 @@ function helpMessage() {
 
 
 function endGame() {
+  $('#helpOne').hide();
+  $('#helpTwo').hide();
+  $('#helpThree').hide();
   $('.chatbox').hide();
   $('#timer').hide();
   $('#text').show();
